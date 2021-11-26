@@ -1,1 +1,2 @@
 C:\Users\Martin\source\repos\SDL2_Prototype\Release\SDL2_Prototype.exe
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Release\SDL2_Prototype.exe

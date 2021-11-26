@@ -2,36 +2,303 @@
 #include <string>
 #include <chrono>
 #include <thread>
+#include <cassert>
+#include <array>
+#include <cmath>
+#include <algorithm>
 #define SDL_MAIN_HANDLED
 #include <SDL.h>
-#include "fps_counter.h"
-#include "map.h"
-#include "player.h"
 bool quit = false;
 int xMouse = 0;
 int yMouse = 0;
-SDL_MouseButtonEvent b;
 int menuflag = 1;
 int startflag = 1;
-int x = 0;
-int y = 0;
+
+struct Sprite 
+{
+    const char* image_path = "C:\\Users\\Martin\\source\\repos\\SDL2_Prototype-v0.01\\resources\\";
+    Sprite(SDL_Renderer* renderer, const std::string filename, const int width) : width(width) 
+    {
+        SDL_Surface* surface = SDL_LoadBMP((std::string(image_path) + filename).c_str());
+        if (!surface) 
+        {
+            std::cerr << "Blad w SDL_LoadBMP: " << SDL_GetError() << std::endl;
+            return;
+        }
+        if (!(surface->w % width) && surface->w / width) 
+        { // szerokosc obrazu musi byc wielokrotnoscia szerokosci sprite'a
+            height = surface->h;
+            nframes = surface->w / width;
+            texture = SDL_CreateTextureFromSurface(renderer, surface);
+        }
+        else
+            std::cerr << "Niewlasciwa wielkosc sprite'a" << std::endl;
+        SDL_FreeSurface(surface);
+    }
+
+    SDL_Rect rect(const int idx) const 
+    { // wybieranie ID sprite'a z tekstury
+        return { idx * width, 0, width, height };
+    }
+
+    ~Sprite() 
+    { // zwalnianie pamieci
+        if (texture) SDL_DestroyTexture(texture);
+    }
+
+    SDL_Texture* texture = nullptr; // obraz
+    int width = 0; // szerokosc sprite'a (szerokosc tekstury = width * nframes)
+    int height = 0; // wysokosc sprite'a
+    int nframes = 0; // liczba klatek w animacji
+};
+
+using Clock = std::chrono::high_resolution_clock;
+using TimeStamp = std::chrono::time_point<Clock>;
+
+struct Animation : public Sprite 
+{
+    Animation(SDL_Renderer* renderer, const std::string filename, const int width, const double duration, const bool repeat) :
+        Sprite(renderer, filename, width), duration(duration), repeat(repeat) {}
+
+    bool animation_ended(const TimeStamp timestamp) const 
+    { // czy animacja jest w trakcie odtwarzania?
+        double elapsed = std::chrono::duration<double>(Clock::now() - timestamp).count(); // sekundy od licznika do teraz
+        return !repeat && elapsed >= duration;
+    }
+
+    int frame(const TimeStamp timestamp) const 
+    { // oblicz ilosc klatek obecnie dla animacji zaczętej od licznika
+        double elapsed = std::chrono::duration<double>(Clock::now() - timestamp).count(); // sekundy od licznika do teraz
+        int idx = static_cast<int>(nframes * elapsed / duration);
+        return repeat ? idx % nframes : std::min(idx, nframes - 1);
+    }
+
+    SDL_Rect rect(const TimeStamp timestamp) const 
+    { // wybierz wlasciwa klatke z tekstury
+        return { frame(timestamp) * width, 0, width, height };
+    }
+
+    const double duration = 1; // dlugosc animacji w sekundach
+    const bool repeat = false; // czy powtorzyc animacje?
+};
+
+struct Map 
+{
+    Map(SDL_Renderer* renderer) : renderer(renderer), textures(renderer, "ground.bmp", 128) 
+    {
+        assert(sizeof(level) == w * h + 1); // +1 dla usuwania koncowki string'a
+        int window_w, window_h;
+        if (!SDL_GetRendererOutputSize(renderer, &window_w, &window_h)) 
+        {
+            tile_w = window_w / w;
+            tile_h = window_h / h;
+        }
+        else
+            std::cerr << "Blad pobierania rozmiaru renderer'a. " << SDL_GetError() << std::endl;
+    }
+
+    void draw() 
+    { // rysowanie poziomu
+        for (int j = 0; j < h; j++)
+            for (int i = 0; i < w; i++) {
+                if (is_empty(i, j)) continue;
+                SDL_Rect dst = { tile_w * i, tile_h * j, tile_w, tile_h };
+                SDL_Rect src = textures.rect(get(i, j));
+                SDL_RenderCopy(renderer, textures.texture, &src, &dst);
+            }
+    }
+
+    void menu()
+    {
+        SDL_RenderCopy(renderer, textures.texture, NULL, NULL);
+    }
+
+    int get(const int i, const int j) const 
+    { // pobierz i przetransformuj do indexu
+        assert(i >= 0 && j >= 0 && i < w&& j < h);
+        return level[i + j * w] - '0';
+    }
+
+    bool is_empty(const int i, const int j) const 
+    {
+        assert(i >= 0 && j >= 0 && i < w&& j < h);
+        return level[i + j * w] == ' ';
+    }
+
+    SDL_Renderer* renderer; // renderer
+    int tile_w = 0, tile_h = 0; // rozmiar pojedynczej czesci mapy w oknie
+
+    const Sprite textures;       // tekstury do narysowania
+    static constexpr int w = 16; // rozmiary mapy, tablica level[] ma dlugosc w*h+1 (+1 na usuwanie koncowki stringa)
+    static constexpr int h = 12; // puste czesci mapy, cyfry oznaczaja indeks tekstur na poszczegolnych czesciach
+    static constexpr char level[w * h + 1] = 
+
+    "                "\
+    "                "\
+    "                "\
+    "                "\
+    "                "\
+    "                "\
+    "                "\
+    "                "\
+    "                "\
+    "                "\
+    "                "\
+    "1234512345123451";
+};
+
+struct FPS_Counter // licznik FPS ktory mozna ewentualnie wyswietlac, fps zlimitowane do 50
+{
+    FPS_Counter(SDL_Renderer* renderer) : renderer(renderer), numbers(renderer, "numbers.bmp", 24) {}
+
+    void draw() 
+    {
+        fps_cur++;
+        double dt = std::chrono::duration<double>(Clock::now() - timestamp).count();
+        if (dt >= .3) 
+        { // co 300ms odśwież licznik fps'ow
+            fps_prev = fps_cur / dt;
+            fps_cur = 0;
+            timestamp = Clock::now();
+        }
+        SDL_Rect dst = { 4, 16, numbers.width, numbers.height }; // rysowanie pierwszej postaci
+        for (const char c : std::to_string(fps_prev)) 
+        { // osobne cyfry od fps_prev
+            SDL_Rect src = numbers.rect(c - '0'); // konwersja znakow numerycznych na int: '7'-'0'=7
+            SDL_RenderCopy(renderer, numbers.texture, &src, &dst); // rysuj obecna cyfre
+            dst.x += numbers.width + 4; // rysuj postacie od lewej do prawej, odstepy miedzy cyframi = 4
+        }
+    }
+
+    int fps_cur = 0; // liczba wykonania funkcji draw() od ostatniego odczytu
+    int fps_prev = 0; // ostatnie odczytanie fps
+    TimeStamp timestamp = Clock::now(); // ostatnia aktualizacja fps_prev
+    SDL_Renderer* renderer; // renderer
+    const Sprite numbers;   // sprite cyfr
+};
+
+struct Player 
+{
+    enum States { REST = 0, TAKEOFF = 1, FLIGHT = 2, LANDING = 3, WALK = 4, FALL = 5 };
+
+    Player(SDL_Renderer* renderer) :
+        renderer(renderer),
+        sprites
+              { Animation(renderer, "rest.bmp",    256, 1.0, true),
+                Animation(renderer, "takeoff.bmp", 256, 0.3, false),
+                Animation(renderer, "flight.bmp",  256, 1.3, false),
+                Animation(renderer, "landing.bmp", 256, 0.3, false),
+                Animation(renderer, "walk.bmp",    256, 1.0, true),
+                Animation(renderer, "fall.bmp",    256, 1.0, true) 
+              } {
+    }
+
+    void set_state(int s) 
+    {
+        timestamp = Clock::now();
+        state = s;
+        if (state != FLIGHT && state != WALK)
+            vx = 0;
+        else if (state == WALK)
+            vx = backwards ? -150 : 150;
+        else if (state == FLIGHT) 
+        {
+            vy = jumpvy;
+            vx = backwards ? -jumpvx : jumpvx;
+        }
+    }
+
+    void handle_keyboard() 
+    {
+        const Uint8* kbstate = SDL_GetKeyboardState(NULL);
+        if (state == WALK && !kbstate[SDL_SCANCODE_RIGHT] && !kbstate[SDL_SCANCODE_LEFT])
+            set_state(REST);
+        if ((state == REST || state == WALK) && kbstate[SDL_SCANCODE_UP]) 
+        {
+            if (kbstate[SDL_SCANCODE_LEFT] || kbstate[SDL_SCANCODE_RIGHT]) 
+            {
+                jumpvx = 200; // daleki skok
+                jumpvy = -200;
+            }
+            else 
+            {
+                jumpvx = 50; // wysoki skok
+                jumpvy = -300;
+            }
+            set_state(TAKEOFF);
+        }
+        if (state == REST && (kbstate[SDL_SCANCODE_LEFT] || kbstate[SDL_SCANCODE_RIGHT])) 
+        {
+            backwards = kbstate[SDL_SCANCODE_LEFT];
+            set_state(WALK);
+        }
+    }
+
+    void update_state(const double dt, const Map& map) 
+    {
+        if (state == TAKEOFF && sprites[state].animation_ended(timestamp))
+            set_state(FLIGHT); // takeoff -> flight
+        if (state == LANDING && sprites[state].animation_ended(timestamp))
+            set_state(REST);   // landing -> rest
+        if (state != FLIGHT && map.is_empty(x / map.tile_w, y / map.tile_h + 1))
+            set_state(FALL);   // sprite fall jesli nie ma pod nogami ziemi
+
+        x += dt * vx; // przed kolizją
+        if (!map.is_empty(x / map.tile_w, y / map.tile_h)) // pozioma kolizja
+        { 
+            int snap = std::round(x / map.tile_w) * map.tile_w; // zmiana koordynatu na granice kolizji
+            x = snap + (snap > x ? 1 : -1);                    // na gore czy dol wolnej czesci mapy?
+            vx = 0; // stop
+        }
+
+        y += dt * vy;  // przed kolizją
+        vy += dt * 300; // grawitacja
+        if (!map.is_empty(x / map.tile_w, y / map.tile_h)) // pionowa kolizja
+        { 
+            int snap = std::round(y / map.tile_h) * map.tile_h;   // zmiana koordynatu na granice kolizji
+            y = snap + (snap > y ? 1 : -1);                     // na gore czy dol wolnej czesci mapy?
+            vy = 0; // stop
+            if (state == FLIGHT || state == FALL)
+                set_state(LANDING);
+        }
+    }
+
+    void draw() 
+    {
+        SDL_Rect src = sprites[state].rect(timestamp);
+        SDL_Rect dest = { int(x) - sprite_w / 2, int(y) - sprite_h, sprite_w, sprite_h };
+        SDL_RenderCopyEx(renderer, sprites[state].texture, &src, &dest, 0, nullptr, backwards ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+    }
+
+    double x = 150, y = 200; // koordynaty postaci
+    double vx = 0, vy = 0;   // szybkosc
+    bool backwards = false;  // kierunek lewo lub prawo
+    double jumpvx = 0, jumpvy = 0; // czy skok jest daleki czy wysoki?
+
+    int state = REST;         // obecny sprite
+    TimeStamp timestamp = Clock::now();
+    SDL_Renderer* renderer;   // rysowanie tutaj
+
+    const int sprite_w = 256; // wielkosc sprite'a na ekranie
+    const int sprite_h = 128;
+    const std::array<Animation, 6> sprites; // sekwencje sprite' do narysowania
+};
 
 void mousePress(SDL_MouseButtonEvent& b) 
 {
     if (b.button == SDL_BUTTON_LEFT) 
     {
         SDL_GetMouseState(&xMouse, &yMouse);
-        SDL_GetGlobalMouseState(&xMouse, &yMouse);
-        printf("%d, %d", xMouse, yMouse);
+        printf("(%d, %d)", xMouse, yMouse);
         //if ((xMouse >= 737 && xMouse <= 897) && (yMouse >= 349 && yMouse <= 423))
         //{
-        //    printf("LOLOLOLOLOLO!");
+        //    printf("Test!");
         //}
     }
 }
 
-void main_loop(SDL_Renderer* renderer) {
-    FPS_Counter fps_counter(renderer);
+void main_loop(SDL_Renderer* renderer) 
+{
     Map map(renderer);
     Player player(renderer);
     TimeStamp timestamp = Clock::now();
@@ -51,7 +318,6 @@ void main_loop(SDL_Renderer* renderer) {
             break; // po kliknieciu ENTER zacznij gre
         }
         if (e.type == SDL_KEYDOWN || SDL_QUIT == e.type || SDL_MOUSEBUTTONDOWN == e.type) {
-            // zamknij gre po wcisnieciu esc lub q
             switch (e.type) 
             {
             case SDL_QUIT:
@@ -64,13 +330,13 @@ void main_loop(SDL_Renderer* renderer) {
             //    y = event.motion.y;
             case SDL_MOUSEBUTTONDOWN:
                 mousePress(e.button);
-                if ((xMouse >= 737 && xMouse <= 897) && (yMouse >= 349 && yMouse <= 423))
+                if ((xMouse >= 456 && xMouse <= 614) && (yMouse >= 266 && yMouse <= 339)) // klikniecie na przycisk start
                 {
                     printf("startujemy");
                     menuflag = 2;
                     startflag = 1;
                 }
-                else if ((xMouse >= 746 && xMouse <= 889) && (yMouse >= 477 && yMouse <= 546)) 
+                else if ((xMouse >= 463 && xMouse <= 605) && (yMouse >= 391 && yMouse <= 464)) // klikniecie na przycisk quit
                 {
                     printf("Wychodzimy");
                     menuflag = 2;
@@ -84,7 +350,6 @@ void main_loop(SDL_Renderer* renderer) {
             }
 
         }
-
 
         SDL_RenderClear(renderer);
         SDL_RenderCopy(renderer, Background_Tx, NULL, NULL);
@@ -114,24 +379,26 @@ void main_loop(SDL_Renderer* renderer) {
         player.update_state(std::chrono::duration<double>(dt).count(), map); // grawitacja, poruszanie sie, kolizja
 
         SDL_RenderClear(renderer); // wyczysc ostatnia klatke
-        fps_counter.draw();
         player.draw();
         map.draw();
         SDL_RenderPresent(renderer);
     }
 }
 
-int main() {
+int main() 
+{
     quit = false;
     SDL_SetMainReady();
-    if (SDL_Init(SDL_INIT_VIDEO)) {
+    if (SDL_Init(SDL_INIT_VIDEO)) 
+    {
         std::cerr << "Blad podczas inicjalizacji SDL'a: " << SDL_GetError() << std::endl;
         return -1;
     }
 
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
-    if (SDL_CreateWindowAndRenderer(800, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_INPUT_FOCUS, &window, &renderer)) {
+    if (SDL_CreateWindowAndRenderer(800, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_INPUT_FOCUS, &window, &renderer)) 
+    {
         std::cerr << "Blad przy tworzeniu okna i renderer'a: " << SDL_GetError() << std::endl;
         return -1;
     }
@@ -144,4 +411,3 @@ int main() {
     SDL_Quit();
     return 0;
 }
-
