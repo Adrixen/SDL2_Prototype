@@ -330,13 +330,13 @@ void main_loop(SDL_Renderer* renderer)
             //    y = event.motion.y;
             case SDL_MOUSEBUTTONDOWN:
                 mousePress(e.button);
-                if ((xMouse >= 456 && xMouse <= 614) && (yMouse >= 266 && yMouse <= 339)) // klikniecie na przycisk start
+                if ((xMouse >= 309 && xMouse <= 500) && (yMouse >= 289 && yMouse <= 351)) // klikniecie na przycisk start
                 {
                     printf("startujemy");
                     menuflag = 2;
                     startflag = 1;
                 }
-                else if ((xMouse >= 463 && xMouse <= 605) && (yMouse >= 391 && yMouse <= 464)) // klikniecie na przycisk quit
+                else if ((xMouse >= 309 && xMouse <= 500) && (yMouse >= 370 && yMouse <= 432)) // klikniecie na przycisk quit
                 {
                     printf("Wychodzimy");
                     menuflag = 2;
