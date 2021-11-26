@@ -8,6 +8,13 @@
 #include <algorithm>
 #define SDL_MAIN_HANDLED
 #include <SDL.h>
+
+/**
+ * Gra platformowa napisana w języku C++ przy użyciu biblioteki SDL.
+ *
+ * @authors Adrian Kowalski, Paweł Czyżewski.
+ */
+
 bool quit = false;
 int xMouse = 0;
 int yMouse = 0;
@@ -15,7 +22,13 @@ int menuflag = 1;
 int startflag = 1;
 
 struct Sprite 
-{
+
+{    
+     /**
+     * Struktura sprite'ów.
+     * Zdefiniowana tutaj szerokosc obrazu jest zaprogramowana tak by byc wielokrotnoscia szerokosci sprite'a
+     * W tej strukturze znajduje sie sciezka do wykorzystywanych zasobow i tekstur.
+     */
     const char* image_path = "C:\\Users\\Martin\\source\\repos\\SDL2_Prototype-v0.01\\resources\\";
     Sprite(SDL_Renderer* renderer, const std::string filename, const int width) : width(width) 
     {
@@ -35,12 +48,16 @@ struct Sprite
             std::cerr << "Niewlasciwa wielkosc sprite'a" << std::endl;
         SDL_FreeSurface(surface);
     }
-
+     /**
+     * Wybieranie ID sprite'a z tekstury
+     */
     SDL_Rect rect(const int idx) const 
     { // wybieranie ID sprite'a z tekstury
         return { idx * width, 0, width, height };
     }
-
+    /**
+    * Zwalnianie pamieci przez niszczenie tekstury
+    */
     ~Sprite() 
     { // zwalnianie pamieci
         if (texture) SDL_DestroyTexture(texture);
@@ -55,24 +72,34 @@ struct Sprite
 using Clock = std::chrono::high_resolution_clock;
 using TimeStamp = std::chrono::time_point<Clock>;
 
+
 struct Animation : public Sprite 
 {
+    /**
+    * Struktura odpowiadająca za animacje
+    */
     Animation(SDL_Renderer* renderer, const std::string filename, const int width, const double duration, const bool repeat) :
         Sprite(renderer, filename, width), duration(duration), repeat(repeat) {}
-
+    /**
+    * Sprawdzenie czy animacja sie skonczyla
+    */
     bool animation_ended(const TimeStamp timestamp) const 
     { // czy animacja jest w trakcie odtwarzania?
         double elapsed = std::chrono::duration<double>(Clock::now() - timestamp).count(); // sekundy od licznika do teraz
         return !repeat && elapsed >= duration;
     }
-
+    /**
+    * Obliczanie ilosci klatek dla animacji.
+    */
     int frame(const TimeStamp timestamp) const 
     { // oblicz ilosc klatek obecnie dla animacji zaczętej od licznika
         double elapsed = std::chrono::duration<double>(Clock::now() - timestamp).count(); // sekundy od licznika do teraz
         int idx = static_cast<int>(nframes * elapsed / duration);
         return repeat ? idx % nframes : std::min(idx, nframes - 1);
     }
-
+    /**
+    * Wybranie wlasciwej klatki z tekstury
+    */
     SDL_Rect rect(const TimeStamp timestamp) const 
     { // wybierz wlasciwa klatke z tekstury
         return { frame(timestamp) * width, 0, width, height };
@@ -82,6 +109,9 @@ struct Animation : public Sprite
     const bool repeat = false; // czy powtorzyc animacje?
 };
 
+/**
+* Struktura odpowiadająca za mapę, po której porusza się gracz
+*/
 struct Map 
 {
     Map(SDL_Renderer* renderer) : renderer(renderer), textures(renderer, "ground.bmp", 128) 
@@ -96,7 +126,9 @@ struct Map
         else
             std::cerr << "Blad pobierania rozmiaru renderer'a. " << SDL_GetError() << std::endl;
     }
-
+    /**
+    * Rysowanie mapy
+    */
     void draw() 
     { // rysowanie poziomu
         for (int j = 0; j < h; j++)
@@ -106,11 +138,6 @@ struct Map
                 SDL_Rect src = textures.rect(get(i, j));
                 SDL_RenderCopy(renderer, textures.texture, &src, &dst);
             }
-    }
-
-    void menu()
-    {
-        SDL_RenderCopy(renderer, textures.texture, NULL, NULL);
     }
 
     int get(const int i, const int j) const 
@@ -124,7 +151,10 @@ struct Map
         assert(i >= 0 && j >= 0 && i < w&& j < h);
         return level[i + j * w] == ' ';
     }
-
+    /**
+    * Zdefiniowane rozmiary pojedyńczych części mapy w oknie, tekstury do narysowania oraz rozmiary mapy.
+    * Tablica level określa, w których miejscach na mapie znajduje się jaka tekstura.
+    */
     SDL_Renderer* renderer; // renderer
     int tile_w = 0, tile_h = 0; // rozmiar pojedynczej czesci mapy w oknie
 
@@ -146,6 +176,11 @@ struct Map
     "                "\
     "1234512345123451";
 };
+
+/**
+* Struktura odpowiadająca za obliczanie ilości klatek na sekundę, klatki są ustawione na maksymalny limit 50.
+* Limit jest ustawiony, głównie po to, aby zużycie CPU nie było wysokie.
+*/
 
 struct FPS_Counter // licznik FPS ktory mozna ewentualnie wyswietlac, fps zlimitowane do 50
 {
@@ -177,6 +212,10 @@ struct FPS_Counter // licznik FPS ktory mozna ewentualnie wyswietlac, fps zlimit
     const Sprite numbers;   // sprite cyfr
 };
 
+/**
+* Struktura odpowiadająca za gracza, są w niej zdefiniowane jego stany i metody odpowiadające za ich zmianę i aktualizacje.
+*/
+
 struct Player 
 {
     enum States { REST = 0, TAKEOFF = 1, FLIGHT = 2, LANDING = 3, WALK = 4, FALL = 5 };
@@ -192,7 +231,9 @@ struct Player
                 Animation(renderer, "fall.bmp",    256, 1.0, true) 
               } {
     }
-
+    /**
+    * Metoda ustawiająca stan gracza
+    */
     void set_state(int s) 
     {
         timestamp = Clock::now();
@@ -207,6 +248,10 @@ struct Player
             vx = backwards ? -jumpvx : jumpvx;
         }
     }
+
+    /**
+    * Metoda, która pobiera przyciski z klawiatury, dzięki którym gracz może się poruszać.
+    */
 
     void handle_keyboard() 
     {
@@ -233,6 +278,10 @@ struct Player
             set_state(WALK);
         }
     }
+
+    /**
+    * Metoda, która aktualizuje stan gracza, jeśli spełnione są poszczególne warunki.
+    */
 
     void update_state(const double dt, const Map& map) 
     {
@@ -263,6 +312,10 @@ struct Player
         }
     }
 
+    /**
+    * Metoda, która wyświetla teksture odpowiadającą danemu stanowi gracza.
+    */
+
     void draw() 
     {
         SDL_Rect src = sprites[state].rect(timestamp);
@@ -284,6 +337,10 @@ struct Player
     const std::array<Animation, 6> sprites; // sekwencje sprite' do narysowania
 };
 
+/**
+* Metoda, która wykonuje się przy kliknięciu lewym przyciskiem myszy. Była używana głównie do ustawienia koordynatów przycisków menu.
+*/
+
 void mousePress(SDL_MouseButtonEvent& b) 
 {
     if (b.button == SDL_BUTTON_LEFT) 
@@ -297,6 +354,10 @@ void mousePress(SDL_MouseButtonEvent& b)
     }
 }
 
+/**
+* Metoda, która jest główną pętlą gry.
+*/
+
 void main_loop(SDL_Renderer* renderer) 
 {
     Map map(renderer);
@@ -307,7 +368,9 @@ void main_loop(SDL_Renderer* renderer)
     Loading_Surf = SDL_LoadBMP("Background.bmp");
     Background_Tx = SDL_CreateTextureFromSurface(renderer, Loading_Surf);
     SDL_FreeSurface(Loading_Surf);
-
+    /**
+    * Pętla menu.
+    */
     while (menuflag==1) // petla menu
     {
         SDL_Event e;
@@ -355,7 +418,9 @@ void main_loop(SDL_Renderer* renderer)
         SDL_RenderCopy(renderer, Background_Tx, NULL, NULL);
         SDL_RenderPresent(renderer);
     }
-
+    /**
+    * Pętla gry.
+    */
     while (startflag == 1) // główna pętla gry
     {
         SDL_Event event;
@@ -384,6 +449,10 @@ void main_loop(SDL_Renderer* renderer)
         SDL_RenderPresent(renderer);
     }
 }
+
+/**
+* Główna metoda, która jest używana, aby uruchomić program.
+*/
 
 int main() 
 {
