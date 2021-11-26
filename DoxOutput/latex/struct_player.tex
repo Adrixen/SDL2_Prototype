@@ -1,0 +1,107 @@
+\hypertarget{struct_player}{}\doxysection{Player Struct Reference}
+\label{struct_player}\index{Player@{Player}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_player_a1523b694198e3579a7cc6142eb1d779a}\label{struct_player_a1523b694198e3579a7cc6142eb1d779a}} 
+enum {\bfseries States} \{ \newline
+{\bfseries REST} = 0
+, {\bfseries TAKEOFF} = 1
+, {\bfseries FLIGHT} = 2
+, {\bfseries LANDING} = 3
+, \newline
+{\bfseries WALK} = 4
+, {\bfseries FALL} = 5
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_player_a49215ac1f32aa91ae94239f6fea0b7f3}\label{struct_player_a49215ac1f32aa91ae94239f6fea0b7f3}} 
+{\bfseries Player} (SDL\+\_\+\+Renderer $\ast$renderer)
+\item 
+void \mbox{\hyperlink{struct_player_a3ebd1c9b0d542aa486925e1a13eb691f}{set\+\_\+state}} (int s)
+\item 
+void \mbox{\hyperlink{struct_player_ad9491de7d31e3a6810564ff143132fcb}{handle\+\_\+keyboard}} ()
+\item 
+void \mbox{\hyperlink{struct_player_a3bdb6982d5aabb898d4517cdb2c050f9}{update\+\_\+state}} (const double dt, const \mbox{\hyperlink{struct_map}{Map}} \&map)
+\item 
+void \mbox{\hyperlink{struct_player_ac18c9d30d2997765321c62030a4b20b7}{draw}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_player_a0458b4db8e8e816bdb2b365b70b53307}\label{struct_player_a0458b4db8e8e816bdb2b365b70b53307}} 
+double {\bfseries x} = 150
+\item 
+\mbox{\Hypertarget{struct_player_a018c59d494fd12d80517b36d62621e34}\label{struct_player_a018c59d494fd12d80517b36d62621e34}} 
+double {\bfseries y} = 200
+\item 
+\mbox{\Hypertarget{struct_player_ae94b76deb6ed53f49d1db40a843f30c8}\label{struct_player_ae94b76deb6ed53f49d1db40a843f30c8}} 
+double {\bfseries vx} = 0
+\item 
+\mbox{\Hypertarget{struct_player_a97c9f469ef054e12fb85c6f239de3e12}\label{struct_player_a97c9f469ef054e12fb85c6f239de3e12}} 
+double {\bfseries vy} = 0
+\item 
+\mbox{\Hypertarget{struct_player_a89c570780d22ee777b215187676f2233}\label{struct_player_a89c570780d22ee777b215187676f2233}} 
+bool {\bfseries backwards} = false
+\item 
+\mbox{\Hypertarget{struct_player_a3b94dd18eebb831d90ba79d4f34df795}\label{struct_player_a3b94dd18eebb831d90ba79d4f34df795}} 
+double {\bfseries jumpvx} = 0
+\item 
+\mbox{\Hypertarget{struct_player_acbef2b07bbaeaa463570cc946f648913}\label{struct_player_acbef2b07bbaeaa463570cc946f648913}} 
+double {\bfseries jumpvy} = 0
+\item 
+\mbox{\Hypertarget{struct_player_a2e6eb92136b8d3a47547f53831591f3e}\label{struct_player_a2e6eb92136b8d3a47547f53831591f3e}} 
+int {\bfseries state} = REST
+\item 
+\mbox{\Hypertarget{struct_player_ae6c1dcc2b6cc8a2c649b897da971a759}\label{struct_player_ae6c1dcc2b6cc8a2c649b897da971a759}} 
+Time\+Stamp {\bfseries timestamp} = Clock\+::now()
+\item 
+\mbox{\Hypertarget{struct_player_adfc6aaa5842f687dd854e5baceaddd9b}\label{struct_player_adfc6aaa5842f687dd854e5baceaddd9b}} 
+SDL\+\_\+\+Renderer $\ast$ {\bfseries renderer}
+\item 
+\mbox{\Hypertarget{struct_player_ad5c070f3ecead8c2226a87dba2f6c413}\label{struct_player_ad5c070f3ecead8c2226a87dba2f6c413}} 
+const int {\bfseries sprite\+\_\+w} = 256
+\item 
+\mbox{\Hypertarget{struct_player_afc2cd495014288c72a97b686d6d9b42e}\label{struct_player_afc2cd495014288c72a97b686d6d9b42e}} 
+const int {\bfseries sprite\+\_\+h} = 128
+\item 
+\mbox{\Hypertarget{struct_player_a28875f7b0a2159bcfced1130452244c0}\label{struct_player_a28875f7b0a2159bcfced1130452244c0}} 
+const std\+::array$<$ \mbox{\hyperlink{struct_animation}{Animation}}, 6 $>$ {\bfseries sprites}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struktura odpowiadająca za gracza, są w niej zdefiniowane jego stany i metody odpowiadające za ich zmianę i aktualizacje. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_player_ac18c9d30d2997765321c62030a4b20b7}\label{struct_player_ac18c9d30d2997765321c62030a4b20b7}} 
+\index{Player@{Player}!draw@{draw}}
+\index{draw@{draw}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Player\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Metoda, która wyświetla teksture odpowiadającą danemu stanowi gracza. \mbox{\Hypertarget{struct_player_ad9491de7d31e3a6810564ff143132fcb}\label{struct_player_ad9491de7d31e3a6810564ff143132fcb}} 
+\index{Player@{Player}!handle\_keyboard@{handle\_keyboard}}
+\index{handle\_keyboard@{handle\_keyboard}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{handle\_keyboard()}{handle\_keyboard()}}
+{\footnotesize\ttfamily void Player\+::handle\+\_\+keyboard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Metoda, która pobiera przyciski z klawiatury, dzięki którym gracz może się poruszać. \mbox{\Hypertarget{struct_player_a3ebd1c9b0d542aa486925e1a13eb691f}\label{struct_player_a3ebd1c9b0d542aa486925e1a13eb691f}} 
+\index{Player@{Player}!set\_state@{set\_state}}
+\index{set\_state@{set\_state}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{set\_state()}{set\_state()}}
+{\footnotesize\ttfamily void Player\+::set\+\_\+state (\begin{DoxyParamCaption}\item[{int}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Metoda ustawiająca stan gracza \mbox{\Hypertarget{struct_player_a3bdb6982d5aabb898d4517cdb2c050f9}\label{struct_player_a3bdb6982d5aabb898d4517cdb2c050f9}} 
+\index{Player@{Player}!update\_state@{update\_state}}
+\index{update\_state@{update\_state}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{update\_state()}{update\_state()}}
+{\footnotesize\ttfamily void Player\+::update\+\_\+state (\begin{DoxyParamCaption}\item[{const double}]{dt,  }\item[{const \mbox{\hyperlink{struct_map}{Map}} \&}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Metoda, która aktualizuje stan gracza, jeśli spełnione są poszczególne warunki. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source.\+cpp\end{DoxyCompactItemize}
