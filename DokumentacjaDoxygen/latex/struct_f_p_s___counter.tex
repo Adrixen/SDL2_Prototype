@@ -1,0 +1,37 @@
+\hypertarget{struct_f_p_s___counter}{}\doxysection{FPS\+\_\+\+Counter Struct Reference}
+\label{struct_f_p_s___counter}\index{FPS\_Counter@{FPS\_Counter}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_f_p_s___counter_ab904b3fdbf63c84c0d98c14d393deb77}\label{struct_f_p_s___counter_ab904b3fdbf63c84c0d98c14d393deb77}} 
+{\bfseries FPS\+\_\+\+Counter} (SDL\+\_\+\+Renderer $\ast$renderer)
+\item 
+\mbox{\Hypertarget{struct_f_p_s___counter_a64179d64a145461880039a8efcfc115e}\label{struct_f_p_s___counter_a64179d64a145461880039a8efcfc115e}} 
+void {\bfseries draw} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_f_p_s___counter_a7ca64ce72a864b996ba6a88140222958}\label{struct_f_p_s___counter_a7ca64ce72a864b996ba6a88140222958}} 
+int {\bfseries fps\+\_\+cur} = 0
+\item 
+\mbox{\Hypertarget{struct_f_p_s___counter_a7833ea77732a8890a891cf5fbaa4cab5}\label{struct_f_p_s___counter_a7833ea77732a8890a891cf5fbaa4cab5}} 
+int {\bfseries fps\+\_\+prev} = 0
+\item 
+\mbox{\Hypertarget{struct_f_p_s___counter_a7555894d61de7ada2fa6be0690e19474}\label{struct_f_p_s___counter_a7555894d61de7ada2fa6be0690e19474}} 
+Time\+Stamp {\bfseries timestamp} = Clock\+::now()
+\item 
+\mbox{\Hypertarget{struct_f_p_s___counter_aa3351877029a18a618b94061b29541e3}\label{struct_f_p_s___counter_aa3351877029a18a618b94061b29541e3}} 
+SDL\+\_\+\+Renderer $\ast$ {\bfseries renderer}
+\item 
+\mbox{\Hypertarget{struct_f_p_s___counter_a4c3257d330d51080c25c42154a37f8b4}\label{struct_f_p_s___counter_a4c3257d330d51080c25c42154a37f8b4}} 
+const \mbox{\hyperlink{struct_sprite}{Sprite}} {\bfseries numbers}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struktura odpowiadająca za obliczanie ilości klatek na sekundę, klatki są ustawione na maksymalny limit 50. Limit jest ustawiony, głównie po to, aby zużycie CPU nie było wysokie. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source.\+cpp\end{DoxyCompactItemize}

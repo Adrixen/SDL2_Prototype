@@ -1,16 +1,16 @@
 ﻿  Source.cpp
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(195,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(292,76): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(292,47): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(296,45): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(296,29): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(298,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(305,45): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(305,29): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(307,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(199,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(309,76): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(309,47): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(313,45): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(313,29): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(315,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(322,45): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(322,29): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(324,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   Generating code
-  3 of 177 functions ( 1.7%) were compiled, the rest were copied from previous compilation.
+  32 of 257 functions (12.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    6 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SDL2_Prototype.vcxproj -> C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Release\SDL2_Prototype.exe

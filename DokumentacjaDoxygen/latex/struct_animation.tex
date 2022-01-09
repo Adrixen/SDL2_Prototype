@@ -1,0 +1,63 @@
+\hypertarget{struct_animation}{}\doxysection{Animation Struct Reference}
+\label{struct_animation}\index{Animation@{Animation}}
+Inheritance diagram for Animation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{struct_animation}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_animation_a8a987d771a97031a2cc09ac360e65867}{Animation}} (SDL\+\_\+\+Renderer $\ast$renderer, const std\+::string filename, const int width, const double duration, const bool repeat)
+\item 
+bool \mbox{\hyperlink{struct_animation_a32358e32337d1dae5799af0fbab6e614}{animation\+\_\+ended}} (const Time\+Stamp timestamp) const
+\item 
+int \mbox{\hyperlink{struct_animation_a1bded8319536cc436e81bd320a2c7cd1}{frame}} (const Time\+Stamp timestamp) const
+\item 
+SDL\+\_\+\+Rect \mbox{\hyperlink{struct_animation_a8e4de930c2fb2ac21dbbfd8f70fcc2e2}{rect}} (const Time\+Stamp timestamp) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_animation_ad9472aa3b7c58f3e88d31cc099631fb8}\label{struct_animation_ad9472aa3b7c58f3e88d31cc099631fb8}} 
+const double {\bfseries duration} = 1
+\item 
+\mbox{\Hypertarget{struct_animation_a9b44f4bcbeca2762d037d432c8048ded}\label{struct_animation_a9b44f4bcbeca2762d037d432c8048ded}} 
+const bool {\bfseries repeat} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_animation_a8a987d771a97031a2cc09ac360e65867}\label{struct_animation_a8a987d771a97031a2cc09ac360e65867}} 
+\index{Animation@{Animation}!Animation@{Animation}}
+\index{Animation@{Animation}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{Animation()}{Animation()}}
+{\footnotesize\ttfamily Animation\+::\+Animation (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{const std\+::string}]{filename,  }\item[{const int}]{width,  }\item[{const double}]{duration,  }\item[{const bool}]{repeat }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Struktura odpowiadająca za animacje 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_animation_a32358e32337d1dae5799af0fbab6e614}\label{struct_animation_a32358e32337d1dae5799af0fbab6e614}} 
+\index{Animation@{Animation}!animation\_ended@{animation\_ended}}
+\index{animation\_ended@{animation\_ended}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{animation\_ended()}{animation\_ended()}}
+{\footnotesize\ttfamily bool Animation\+::animation\+\_\+ended (\begin{DoxyParamCaption}\item[{const Time\+Stamp}]{timestamp }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sprawdzenie czy animacja sie skonczyla \mbox{\Hypertarget{struct_animation_a1bded8319536cc436e81bd320a2c7cd1}\label{struct_animation_a1bded8319536cc436e81bd320a2c7cd1}} 
+\index{Animation@{Animation}!frame@{frame}}
+\index{frame@{frame}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{frame()}{frame()}}
+{\footnotesize\ttfamily int Animation\+::frame (\begin{DoxyParamCaption}\item[{const Time\+Stamp}]{timestamp }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Obliczanie ilosci klatek dla animacji. \mbox{\Hypertarget{struct_animation_a8e4de930c2fb2ac21dbbfd8f70fcc2e2}\label{struct_animation_a8e4de930c2fb2ac21dbbfd8f70fcc2e2}} 
+\index{Animation@{Animation}!rect@{rect}}
+\index{rect@{rect}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{rect()}{rect()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Rect Animation\+::rect (\begin{DoxyParamCaption}\item[{const Time\+Stamp}]{timestamp }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Wybranie wlasciwej klatki z tekstury 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source.\+cpp\end{DoxyCompactItemize}

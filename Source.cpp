@@ -3,9 +3,13 @@
 #include <chrono>
 #include <thread>
 #include <cassert>
+#include <stdio.h>
 #include <array>
 #include <cmath>
 #include <algorithm>
+#include <fstream>
+#include <strstream>
+#include <string>
 #define SDL_MAIN_HANDLED
 #include <SDL.h>
 
@@ -163,18 +167,18 @@ struct Map
     static constexpr int h = 12; // puste czesci mapy, cyfry oznaczaja indeks tekstur na poszczegolnych czesciach
     static constexpr char level[w * h + 1] = 
 
-    "                "\
-    "                "\
-    "                "\
-    "                "\
-    "                "\
-    "                "\
-    "                "\
-    "                "\
-    "                "\
-    "                "\
-    "                "\
-    "1234512345123451";
+    "1111111111111111"\
+    "2              2"\
+    "2              2"\
+    "2              2"\
+    "2              2"\
+    "2              2"\
+    "2              2"\
+    "2              2"\
+    "2           3  2"\
+    "2        3     2"\
+    "2      332333332"\
+    "2333333222222222";
 };
 
 /**
@@ -277,6 +281,17 @@ struct Player
             backwards = kbstate[SDL_SCANCODE_LEFT];
             set_state(WALK);
         }
+        if (state == REST && (kbstate[SDL_SCANCODE_P]))
+        {
+            printf("Saving...");
+            std::ofstream file;
+            file.open("SavedCoordinateX.txt");
+            file << kordgetterx();
+            file.close();
+            file.open("SavedCoordinateY.txt");
+            file << kordgettery();
+            file.close();
+        }
     }
 
     /**
@@ -335,6 +350,16 @@ struct Player
     const int sprite_w = 256; // wielkosc sprite'a na ekranie
     const int sprite_h = 128;
     const std::array<Animation, 6> sprites; // sekwencje sprite' do narysowania
+
+    double kordgetterx()
+    {
+        return x;
+    }
+
+    double kordgettery()
+    {
+        return y;
+    }
 };
 
 /**
@@ -399,6 +424,19 @@ void main_loop(SDL_Renderer* renderer)
                     menuflag = 2;
                     startflag = 1;
                 }
+                else if ((xMouse >= 309 && xMouse <= 500) && (yMouse >= 224 && yMouse <= 280)) // klikniecie na przycisk quit
+                {
+                    printf("Loading Save!");
+                    double loadedx, loadedy;
+                    std::ifstream file("SavedCoordinateX.txt");
+                    file >> loadedx;
+                    std::ifstream file2("SavedCoordinateY.txt");
+                    file2 >> loadedy;
+                    player.x = loadedx;
+                    player.y = loadedy;
+                    menuflag = 2;
+                    startflag = 1;
+                }
                 else if ((xMouse >= 309 && xMouse <= 500) && (yMouse >= 370 && yMouse <= 432)) // klikniecie na przycisk quit
                 {
                     printf("Wychodzimy");
@@ -429,9 +467,7 @@ void main_loop(SDL_Renderer* renderer)
             printf("Konczymy2!");
         break; // po kliknieciu ESC lub zamknieciu okna wyjdz z gry
         }
-        //if (quit == true)
-        //    startflag = 2;
-        //    break;
+
         player.handle_keyboard(); // odczytywanie stanu z klawiatury
 
         const auto dt = Clock::now() - timestamp;
