@@ -24,6 +24,7 @@ int xMouse = 0;
 int yMouse = 0;
 int menuflag = 1;
 int startflag = 1;
+int poziom = 1;
 
 struct Sprite 
 
@@ -147,13 +148,29 @@ struct Map
     int get(const int i, const int j) const 
     { // pobierz i przetransformuj do indexu
         assert(i >= 0 && j >= 0 && i < w&& j < h);
-        return level[i + j * w] - '0';
+        if (poziom == 1) 
+        {
+            return level[i + j * w] - '0';
+        }
+        else if (poziom == 2)
+        {
+            return level2[i + j * w] - '0';
+        }
+
     }
 
     bool is_empty(const int i, const int j) const 
     {
         assert(i >= 0 && j >= 0 && i < w&& j < h);
-        return level[i + j * w] == ' ';
+        if (poziom == 1)
+        {
+            return level[i + j * w] == ' ';
+        }
+        else if (poziom == 2)
+        {
+            return level2[i + j * w] == ' ';
+        }
+
     }
     /**
     * Zdefiniowane rozmiary pojedyńczych części mapy w oknie, tekstury do narysowania oraz rozmiary mapy.
@@ -176,10 +193,26 @@ struct Map
     "2              2"\
     "2              2"\
     "2           3  2"\
-    "2        3     2"\
+    "2        3    52"\
     "2      332333332"\
     "2333333222222222";
+
+    static constexpr char level2[w * h + 1] =
+
+        "1111111111111111"\
+        "2              2"\
+        "2              2"\
+        "2              2"\
+        "2              2"\
+        "2              2"\
+        "2              2"\
+        "2   3          2"\
+        "2  323         2"\
+        "2              2"\
+        "2              2"\
+        "2333333333333332";
 };
+
 
 /**
 * Struktura odpowiadająca za obliczanie ilości klatek na sekundę, klatki są ustawione na maksymalny limit 50.
@@ -290,6 +323,9 @@ struct Player
             file.close();
             file.open("SavedCoordinateY.txt");
             file << kordgettery();
+            file.close();
+            file.open("SavedLevel.txt");
+            file << poziom;
             file.close();
         }
     }
@@ -424,16 +460,20 @@ void main_loop(SDL_Renderer* renderer)
                     menuflag = 2;
                     startflag = 1;
                 }
-                else if ((xMouse >= 309 && xMouse <= 500) && (yMouse >= 224 && yMouse <= 280)) // klikniecie na przycisk quit
+                else if ((xMouse >= 309 && xMouse <= 500) && (yMouse >= 224 && yMouse <= 280))
                 {
                     printf("Loading Save!");
                     double loadedx, loadedy;
+                    int loadedpoziom;
                     std::ifstream file("SavedCoordinateX.txt");
                     file >> loadedx;
                     std::ifstream file2("SavedCoordinateY.txt");
                     file2 >> loadedy;
+                    std::ifstream file3("SavedLevel.txt");
+                    file3 >> loadedpoziom;
                     player.x = loadedx;
                     player.y = loadedy;
+                    poziom = loadedpoziom;
                     menuflag = 2;
                     startflag = 1;
                 }
@@ -461,6 +501,12 @@ void main_loop(SDL_Renderer* renderer)
     */
     while (startflag == 1) // główna pętla gry
     {
+        if (poziom == 1 && player.x >= 699 && player.y >= 449)
+        {
+            poziom = 2;
+            player.x = 150;
+            player.y = 200;
+        }
         SDL_Event event;
         if (SDL_PollEvent(&event) && (SDL_QUIT == event.type || (SDL_KEYDOWN == event.type && SDLK_ESCAPE == event.key.keysym.sym)))
         {
