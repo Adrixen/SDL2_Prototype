@@ -12,6 +12,8 @@
 #include <string>
 #define SDL_MAIN_HANDLED
 #include <SDL.h>
+#include <SDL_mixer.h>
+
 
 /**
  * Gra platformowa napisana w języku C++ przy użyciu biblioteki SDL.
@@ -192,7 +194,7 @@ struct Map
     "2              2"\
     "2              2"\
     "2              2"\
-    "2           3  2"\
+    "2              2"\
     "2        3    52"\
     "2      332333332"\
     "2333333222222222";
@@ -307,11 +309,16 @@ struct Player
                 jumpvx = 50; // wysoki skok
                 jumpvy = -300;
             }
+            Mix_Chunk* jumpEffect = Mix_LoadWAV("sounds\\jump.wav");
+            Mix_PlayChannel(-1, jumpEffect, 0);
             set_state(TAKEOFF);
+
         }
         if (state == REST && (kbstate[SDL_SCANCODE_LEFT] || kbstate[SDL_SCANCODE_RIGHT])) 
         {
             backwards = kbstate[SDL_SCANCODE_LEFT];
+            Mix_Chunk* runEffect = Mix_LoadWAV("sounds\\run.wav");
+            Mix_PlayChannel(-1, runEffect, 0);
             set_state(WALK);
         }
         if (state == REST && (kbstate[SDL_SCANCODE_P]))
@@ -503,6 +510,8 @@ void main_loop(SDL_Renderer* renderer)
     {
         if (poziom == 1 && player.x >= 699 && player.y >= 449)
         {
+            Mix_Chunk* portalEffect = Mix_LoadWAV("sounds\\portal.wav");
+            Mix_PlayChannel(-1, portalEffect, 0);
             poziom = 2;
             player.x = 150;
             player.y = 200;
@@ -540,25 +549,38 @@ int main()
 {
     quit = false;
     SDL_SetMainReady();
-    if (SDL_Init(SDL_INIT_VIDEO)) 
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) <0 )
     {
         std::cerr << "Blad podczas inicjalizacji SDL'a: " << SDL_GetError() << std::endl;
         return -1;
     }
 
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+
+    Mix_Music *backgroundSound = Mix_LoadMUS("music\\background.wav");
+    Mix_Chunk *jumpEffect = Mix_LoadWAV("sounds\\jump.wav");
+    Mix_Chunk *portalEffect = Mix_LoadWAV("sounds\\portal.wav");
+    Mix_Chunk *runningEffect = Mix_LoadWAV("sounds\\run.wav");
+
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
-    if (SDL_CreateWindowAndRenderer(800, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_INPUT_FOCUS, &window, &renderer)) 
+    if (SDL_CreateWindowAndRenderer(800, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_INPUT_FOCUS, &window, &renderer)<0) 
     {
         std::cerr << "Blad przy tworzeniu okna i renderer'a: " << SDL_GetError() << std::endl;
         return -1;
     }
     SDL_SetWindowTitle(window, "Platformer 3ID14B");
     SDL_SetRenderDrawColor(renderer, 210, 255, 179, 255);
-
+    Mix_PlayMusic(backgroundSound, -1);
     main_loop(renderer);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
+    Mix_FreeMusic(backgroundSound);
+    Mix_FreeChunk(jumpEffect);
+    Mix_FreeChunk(portalEffect);
+    Mix_FreeChunk(runningEffect);
+    Mix_CloseAudio();
     SDL_Quit();
     return 0;
 }
+
