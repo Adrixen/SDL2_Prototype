@@ -197,7 +197,7 @@ struct Map
     "2              2"\
     "2        3    52"\
     "2      332333332"\
-    "2333333222222222";
+    "2333333222222222"; //poziom pierwszy
 
     static constexpr char level2[w * h + 1] =
 
@@ -212,7 +212,7 @@ struct Map
         "2  323         2"\
         "2              2"\
         "2              2"\
-        "2333333333333332";
+        "2333333333333332"; //poziom drugi
 };
 
 
@@ -309,7 +309,7 @@ struct Player
                 jumpvx = 50; // wysoki skok
                 jumpvy = -300;
             }
-            Mix_Chunk* jumpEffect = Mix_LoadWAV("sounds\\jump.wav");
+            Mix_Chunk* jumpEffect = Mix_LoadWAV("sounds\\jump.wav"); //dzwiek skoku
             Mix_PlayChannel(-1, jumpEffect, 0);
             set_state(TAKEOFF);
 
@@ -317,21 +317,21 @@ struct Player
         if (state == REST && (kbstate[SDL_SCANCODE_LEFT] || kbstate[SDL_SCANCODE_RIGHT])) 
         {
             backwards = kbstate[SDL_SCANCODE_LEFT];
-            Mix_Chunk* runEffect = Mix_LoadWAV("sounds\\run.wav");
+            Mix_Chunk* runEffect = Mix_LoadWAV("sounds\\run.wav"); //dzwiek biegu
             Mix_PlayChannel(-1, runEffect, 0);
             set_state(WALK);
         }
-        if (state == REST && (kbstate[SDL_SCANCODE_P]))
+        if (state == REST && (kbstate[SDL_SCANCODE_P])) //aby zapisac gre wcisnij przycisk "p"
         {
             printf("Saving...");
             std::ofstream file;
-            file.open("SavedCoordinateX.txt");
+            file.open("SavedCoordinateX.txt"); //zapisywanie koordynatu X
             file << kordgetterx();
             file.close();
-            file.open("SavedCoordinateY.txt");
+            file.open("SavedCoordinateY.txt"); //zapisywanie koordynatu Y
             file << kordgettery();
             file.close();
-            file.open("SavedLevel.txt");
+            file.open("SavedLevel.txt"); //zapisywanie poziomu
             file << poziom;
             file.close();
         }
@@ -472,11 +472,11 @@ void main_loop(SDL_Renderer* renderer)
                     printf("Loading Save!");
                     double loadedx, loadedy;
                     int loadedpoziom;
-                    std::ifstream file("SavedCoordinateX.txt");
+                    std::ifstream file("SavedCoordinateX.txt"); //odczytywanie koordynatu X
                     file >> loadedx;
-                    std::ifstream file2("SavedCoordinateY.txt");
+                    std::ifstream file2("SavedCoordinateY.txt"); //odczytywanie koordynatu Y
                     file2 >> loadedy;
-                    std::ifstream file3("SavedLevel.txt");
+                    std::ifstream file3("SavedLevel.txt"); //odczytywanie poziomu
                     file3 >> loadedpoziom;
                     player.x = loadedx;
                     player.y = loadedy;
@@ -508,9 +508,9 @@ void main_loop(SDL_Renderer* renderer)
     */
     while (startflag == 1) // główna pętla gry
     {
-        if (poziom == 1 && player.x >= 699 && player.y >= 449)
+        if (poziom == 1 && player.x >= 699 && player.y >= 449) //jesli gracz wejdzie w portal, przenies go na poziom 2
         {
-            Mix_Chunk* portalEffect = Mix_LoadWAV("sounds\\portal.wav");
+            Mix_Chunk* portalEffect = Mix_LoadWAV("sounds\\portal.wav"); //dzwiek portalu
             Mix_PlayChannel(-1, portalEffect, 0);
             poziom = 2;
             player.x = 150;
