@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['set_5fstate_0',['set_state',['../struct_player.html#a3ebd1c9b0d542aa486925e1a13eb691f',1,'Player']]],
-  ['sprite_1',['Sprite',['../struct_sprite.html',1,'']]]
+  ['map_0',['Map',['../struct_map.html',1,'Map'],['../struct_map.html#aa6715bd0234fb3c638e12dd02483fe7f',1,'Map::Map()']]]
 ];

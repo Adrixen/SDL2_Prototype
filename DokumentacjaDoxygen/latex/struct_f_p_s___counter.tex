@@ -1,36 +1,61 @@
 \hypertarget{struct_f_p_s___counter}{}\doxysection{FPS\+\_\+\+Counter Struct Reference}
 \label{struct_f_p_s___counter}\index{FPS\_Counter@{FPS\_Counter}}
+
+
+\texorpdfstring{$<$}{<} licznik FPS ktory mozna ewentualnie wyswietlac, fps zlimitowane do 50  
+
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{struct_f_p_s___counter_ab904b3fdbf63c84c0d98c14d393deb77}\label{struct_f_p_s___counter_ab904b3fdbf63c84c0d98c14d393deb77}} 
-{\bfseries FPS\+\_\+\+Counter} (SDL\+\_\+\+Renderer $\ast$renderer)
+{\bfseries FPS\+\_\+\+Counter} (SDL\+\_\+\+Renderer $\ast$\mbox{\hyperlink{struct_f_p_s___counter_aa3351877029a18a618b94061b29541e3}{renderer}})
 \item 
-\mbox{\Hypertarget{struct_f_p_s___counter_a64179d64a145461880039a8efcfc115e}\label{struct_f_p_s___counter_a64179d64a145461880039a8efcfc115e}} 
-void {\bfseries draw} ()
+void \mbox{\hyperlink{struct_f_p_s___counter_a64179d64a145461880039a8efcfc115e}{draw}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{struct_f_p_s___counter_a7ca64ce72a864b996ba6a88140222958}\label{struct_f_p_s___counter_a7ca64ce72a864b996ba6a88140222958}} 
 int {\bfseries fps\+\_\+cur} = 0
-\item 
+\begin{DoxyCompactList}\small\item\em liczba wykonania funkcji \mbox{\hyperlink{struct_f_p_s___counter_a64179d64a145461880039a8efcfc115e}{draw()}} od ostatniego odczytu \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_f_p_s___counter_a7833ea77732a8890a891cf5fbaa4cab5}\label{struct_f_p_s___counter_a7833ea77732a8890a891cf5fbaa4cab5}} 
 int {\bfseries fps\+\_\+prev} = 0
-\item 
+\begin{DoxyCompactList}\small\item\em ostatnie odczytanie fps \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_f_p_s___counter_a7555894d61de7ada2fa6be0690e19474}\label{struct_f_p_s___counter_a7555894d61de7ada2fa6be0690e19474}} 
 Time\+Stamp {\bfseries timestamp} = Clock\+::now()
-\item 
+\begin{DoxyCompactList}\small\item\em ostatnia aktualizacja fps\+\_\+prev \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_f_p_s___counter_aa3351877029a18a618b94061b29541e3}\label{struct_f_p_s___counter_aa3351877029a18a618b94061b29541e3}} 
 SDL\+\_\+\+Renderer $\ast$ {\bfseries renderer}
-\item 
+\begin{DoxyCompactList}\small\item\em renderer \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_f_p_s___counter_a4c3257d330d51080c25c42154a37f8b4}\label{struct_f_p_s___counter_a4c3257d330d51080c25c42154a37f8b4}} 
 const \mbox{\hyperlink{struct_sprite}{Sprite}} {\bfseries numbers}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em sprite cyfr \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+\texorpdfstring{$<$}{<} licznik FPS ktory mozna ewentualnie wyswietlac, fps zlimitowane do 50 
+
 Struktura odpowiadająca za obliczanie ilości klatek na sekundę, klatki są ustawione na maksymalny limit 50. Limit jest ustawiony, głównie po to, aby zużycie CPU nie było wysokie. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_f_p_s___counter_a64179d64a145461880039a8efcfc115e}\label{struct_f_p_s___counter_a64179d64a145461880039a8efcfc115e}} 
+\index{FPS\_Counter@{FPS\_Counter}!draw@{draw}}
+\index{draw@{draw}!FPS\_Counter@{FPS\_Counter}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void FPS\+\_\+\+Counter\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\texorpdfstring{$<$}{<} co 300ms odśwież licznik fps\textquotesingle{}ow
+
+\texorpdfstring{$<$}{<} rysowanie pierwszej postaci
+
+\texorpdfstring{$<$}{<} osobne cyfry od fps\+\_\+prev
+
+\texorpdfstring{$<$}{<} konwersja znakow numerycznych na int\+: \textquotesingle{}7\textquotesingle{}-\/\textquotesingle{}0\textquotesingle{}=7
+
+\texorpdfstring{$<$}{<} rysuj obecna cyfre
+
+\texorpdfstring{$<$}{<} rysuj postacie od lewej do prawej, odstepy miedzy cyframi = 4
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

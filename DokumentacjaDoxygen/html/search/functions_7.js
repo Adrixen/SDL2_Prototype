@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_7esprite_0',['~Sprite',['../struct_sprite.html#a8accab430f9d90ae5117b57d67e32b84',1,'Sprite']]]
+  ['set_5fstate_0',['set_state',['../struct_player.html#a3ebd1c9b0d542aa486925e1a13eb691f',1,'Player']]],
+  ['sprite_1',['Sprite',['../struct_sprite.html#a8b05d6c589baaf9f66d4f9acef34cdc3',1,'Sprite']]]
 ];

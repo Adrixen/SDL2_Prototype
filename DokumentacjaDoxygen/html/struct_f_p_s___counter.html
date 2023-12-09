@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SDL2_Platformer_3ID14B: FPS_Counter Struct Reference</title>
+<title>SDL2 Project 3ID14B Platformer: FPS_Counter Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">SDL2_Platformer_3ID14B
+   <div id="projectname">SDL2 Project 3ID14B Platformer<span id="projectnumber">&#160;1.0.0</span>
    </div>
-   <div id="projectbrief">Adrian Kowalski_Pawel Czyzewski</div>
+   <div id="projectbrief">Adrian Kowalski i Paweł Czyżewski</div>
   </td>
  </tr>
  </tbody>
@@ -70,37 +70,77 @@ $(function() {
   <div class="headertitle"><div class="title">FPS_Counter Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>&lt; licznik FPS ktory mozna ewentualnie wyswietlac, fps zlimitowane do 50  
+ <a href="struct_f_p_s___counter.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab904b3fdbf63c84c0d98c14d393deb77"><td class="memItemLeft" align="right" valign="top"><a id="ab904b3fdbf63c84c0d98c14d393deb77" name="ab904b3fdbf63c84c0d98c14d393deb77"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>FPS_Counter</b> (SDL_Renderer *renderer)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>FPS_Counter</b> (SDL_Renderer *<a class="el" href="struct_f_p_s___counter.html#aa3351877029a18a618b94061b29541e3">renderer</a>)</td></tr>
 <tr class="separator:ab904b3fdbf63c84c0d98c14d393deb77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64179d64a145461880039a8efcfc115e"><td class="memItemLeft" align="right" valign="top"><a id="a64179d64a145461880039a8efcfc115e" name="a64179d64a145461880039a8efcfc115e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> ()</td></tr>
+<tr class="memitem:a64179d64a145461880039a8efcfc115e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_p_s___counter.html#a64179d64a145461880039a8efcfc115e">draw</a> ()</td></tr>
 <tr class="separator:a64179d64a145461880039a8efcfc115e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a7ca64ce72a864b996ba6a88140222958"><td class="memItemLeft" align="right" valign="top"><a id="a7ca64ce72a864b996ba6a88140222958" name="a7ca64ce72a864b996ba6a88140222958"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>fps_cur</b> = 0</td></tr>
+<tr class="memdesc:a7ca64ce72a864b996ba6a88140222958"><td class="mdescLeft">&#160;</td><td class="mdescRight">liczba wykonania funkcji <a class="el" href="struct_f_p_s___counter.html#a64179d64a145461880039a8efcfc115e">draw()</a> od ostatniego odczytu <br /></td></tr>
 <tr class="separator:a7ca64ce72a864b996ba6a88140222958"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7833ea77732a8890a891cf5fbaa4cab5"><td class="memItemLeft" align="right" valign="top"><a id="a7833ea77732a8890a891cf5fbaa4cab5" name="a7833ea77732a8890a891cf5fbaa4cab5"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>fps_prev</b> = 0</td></tr>
+<tr class="memdesc:a7833ea77732a8890a891cf5fbaa4cab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">ostatnie odczytanie fps <br /></td></tr>
 <tr class="separator:a7833ea77732a8890a891cf5fbaa4cab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7555894d61de7ada2fa6be0690e19474"><td class="memItemLeft" align="right" valign="top"><a id="a7555894d61de7ada2fa6be0690e19474" name="a7555894d61de7ada2fa6be0690e19474"></a>
 TimeStamp&#160;</td><td class="memItemRight" valign="bottom"><b>timestamp</b> = Clock::now()</td></tr>
+<tr class="memdesc:a7555894d61de7ada2fa6be0690e19474"><td class="mdescLeft">&#160;</td><td class="mdescRight">ostatnia aktualizacja fps_prev <br /></td></tr>
 <tr class="separator:a7555894d61de7ada2fa6be0690e19474"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3351877029a18a618b94061b29541e3"><td class="memItemLeft" align="right" valign="top"><a id="aa3351877029a18a618b94061b29541e3" name="aa3351877029a18a618b94061b29541e3"></a>
 SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><b>renderer</b></td></tr>
+<tr class="memdesc:aa3351877029a18a618b94061b29541e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">renderer <br /></td></tr>
 <tr class="separator:aa3351877029a18a618b94061b29541e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c3257d330d51080c25c42154a37f8b4"><td class="memItemLeft" align="right" valign="top"><a id="a4c3257d330d51080c25c42154a37f8b4" name="a4c3257d330d51080c25c42154a37f8b4"></a>
 const <a class="el" href="struct_sprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><b>numbers</b></td></tr>
+<tr class="memdesc:a4c3257d330d51080c25c42154a37f8b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">sprite cyfr <br /></td></tr>
 <tr class="separator:a4c3257d330d51080c25c42154a37f8b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Struktura odpowiadająca za obliczanie ilości klatek na sekundę, klatki są ustawione na maksymalny limit 50. Limit jest ustawiony, głównie po to, aby zużycie CPU nie było wysokie. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<div class="textblock"><p >&lt; licznik FPS ktory mozna ewentualnie wyswietlac, fps zlimitowane do 50 </p>
+<p >Struktura odpowiadająca za obliczanie ilości klatek na sekundę, klatki są ustawione na maksymalny limit 50. Limit jest ustawiony, głównie po to, aby zużycie CPU nie było wysokie. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a64179d64a145461880039a8efcfc115e" name="a64179d64a145461880039a8efcfc115e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64179d64a145461880039a8efcfc115e">&#9670;&nbsp;</a></span>draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FPS_Counter::draw </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >&lt; co 300ms odśwież licznik fps'ow</p>
+<p >&lt; rysowanie pierwszej postaci</p>
+<p >&lt; osobne cyfry od fps_prev</p>
+<p >&lt; konwersja znakow numerycznych na int: '7'-'0'=7</p>
+<p >&lt; rysuj obecna cyfre</p>
+<p >&lt; rysuj postacie od lewej do prawej, odstepy miedzy cyframi = 4</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Source.cpp</li>
 </ul>
 </div><!-- contents -->

@@ -3,13 +3,11 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{struct_map_aa6715bd0234fb3c638e12dd02483fe7f}\label{struct_map_aa6715bd0234fb3c638e12dd02483fe7f}} 
-{\bfseries Map} (SDL\+\_\+\+Renderer $\ast$\mbox{\hyperlink{struct_map_a92378f27d8c961168ac079ef6d019fc7}{renderer}})
+\mbox{\hyperlink{struct_map_aa6715bd0234fb3c638e12dd02483fe7f}{Map}} (SDL\+\_\+\+Renderer $\ast$\mbox{\hyperlink{struct_map_a92378f27d8c961168ac079ef6d019fc7}{renderer}})
 \item 
 void \mbox{\hyperlink{struct_map_a6a40755f8541eece2fa48e9e24a588f8}{draw}} ()
 \item 
-\mbox{\Hypertarget{struct_map_a94d0dbb9c2eb7efaebdaa5f33b2bddae}\label{struct_map_a94d0dbb9c2eb7efaebdaa5f33b2bddae}} 
-int {\bfseries get} (const int i, const int j) const
+int \mbox{\hyperlink{struct_map_a94d0dbb9c2eb7efaebdaa5f33b2bddae}{get}} (const int i, const int j) const
 \item 
 \mbox{\Hypertarget{struct_map_a245a1bd867f95ee109f5cef3d82a0b20}\label{struct_map_a245a1bd867f95ee109f5cef3d82a0b20}} 
 bool {\bfseries is\+\_\+empty} (const int i, const int j) const
@@ -18,33 +16,42 @@ bool {\bfseries is\+\_\+empty} (const int i, const int j) const
 \begin{DoxyCompactItemize}
 \item 
 SDL\+\_\+\+Renderer $\ast$ \mbox{\hyperlink{struct_map_a92378f27d8c961168ac079ef6d019fc7}{renderer}}
-\item 
+\begin{DoxyCompactList}\small\item\em renderer \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_map_af2e2dfd8275766da75f1bb8095423591}\label{struct_map_af2e2dfd8275766da75f1bb8095423591}} 
 int {\bfseries tile\+\_\+w} = 0
 \item 
 \mbox{\Hypertarget{struct_map_a09b8cfaf698b5d3bfbbad3e53d749002}\label{struct_map_a09b8cfaf698b5d3bfbbad3e53d749002}} 
 int {\bfseries tile\+\_\+h} = 0
-\item 
+\begin{DoxyCompactList}\small\item\em rozmiar pojedynczej czesci mapy w oknie \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_map_a3a7d998cb79e689d97e8c51abe1fb16c}\label{struct_map_a3a7d998cb79e689d97e8c51abe1fb16c}} 
 const \mbox{\hyperlink{struct_sprite}{Sprite}} {\bfseries textures}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em tekstury do narysowania \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{struct_map_a21e42d20381212b0bda7940f21f97312}\label{struct_map_a21e42d20381212b0bda7940f21f97312}} 
 static constexpr int {\bfseries w} = 16
-\item 
+\begin{DoxyCompactList}\small\item\em rozmiary mapy, tablica level\mbox{[}\mbox{]} ma dlugosc w$\ast$h+1 (+1 na usuwanie koncowki stringa) \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_map_ae0643a7a998c28ea074381ae8a802854}\label{struct_map_ae0643a7a998c28ea074381ae8a802854}} 
 static constexpr int {\bfseries h} = 12
-\item 
-static constexpr char \mbox{\hyperlink{struct_map_a823c28d70d9fca7fd1b68600a8999d34}{level}} \mbox{[}w $\ast$h+1\mbox{]}
-\item 
-static constexpr char \mbox{\hyperlink{struct_map_af7fe1b8b2180e9ab8f36cc4a8a3e8eeb}{level2}} \mbox{[}w $\ast$h+1\mbox{]}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em puste czesci mapy, cyfry oznaczaja indeks tekstur na poszczegolnych czesciach \end{DoxyCompactList}\item 
+static constexpr char \mbox{\hyperlink{struct_map_a823c28d70d9fca7fd1b68600a8999d34}{level}} \mbox{[}\mbox{\hyperlink{struct_map_a21e42d20381212b0bda7940f21f97312}{w}} $\ast$\mbox{\hyperlink{struct_map_ae0643a7a998c28ea074381ae8a802854}{h}}+1\mbox{]}
+\begin{DoxyCompactList}\small\item\em poziom pierwszy \end{DoxyCompactList}\item 
+static constexpr char \mbox{\hyperlink{struct_map_af7fe1b8b2180e9ab8f36cc4a8a3e8eeb}{level2}} \mbox{[}\mbox{\hyperlink{struct_map_a21e42d20381212b0bda7940f21f97312}{w}} $\ast$\mbox{\hyperlink{struct_map_ae0643a7a998c28ea074381ae8a802854}{h}}+1\mbox{]}
+\begin{DoxyCompactList}\small\item\em poziom drugi \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Struktura odpowiadająca za mapę, po której porusza się gracz 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_map_aa6715bd0234fb3c638e12dd02483fe7f}\label{struct_map_aa6715bd0234fb3c638e12dd02483fe7f}} 
+\index{Map@{Map}!Map@{Map}}
+\index{Map@{Map}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}}
+{\footnotesize\ttfamily Map\+::\+Map (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\texorpdfstring{$<$}{<} +1 dla usuwania koncowki string\textquotesingle{}a
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{struct_map_a6a40755f8541eece2fa48e9e24a588f8}\label{struct_map_a6a40755f8541eece2fa48e9e24a588f8}} 
@@ -53,14 +60,20 @@ Struktura odpowiadająca za mapę, po której porusza się gracz
 \doxysubsubsection{\texorpdfstring{draw()}{draw()}}
 {\footnotesize\ttfamily void Map\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Rysowanie mapy 
+Rysowanie mapy \texorpdfstring{$<$}{<} rysowanie poziomu\mbox{\Hypertarget{struct_map_a94d0dbb9c2eb7efaebdaa5f33b2bddae}\label{struct_map_a94d0dbb9c2eb7efaebdaa5f33b2bddae}} 
+\index{Map@{Map}!get@{get}}
+\index{get@{get}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily int Map\+::get (\begin{DoxyParamCaption}\item[{const int}]{i,  }\item[{const int}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\texorpdfstring{$<$}{<} pobierz i przetransformuj do indexu
 
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{struct_map_a823c28d70d9fca7fd1b68600a8999d34}\label{struct_map_a823c28d70d9fca7fd1b68600a8999d34}} 
 \index{Map@{Map}!level@{level}}
 \index{level@{level}!Map@{Map}}
 \doxysubsubsection{\texorpdfstring{level}{level}}
-{\footnotesize\ttfamily constexpr char Map\+::level\mbox{[}w $\ast$h+1\mbox{]}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily constexpr char Map\+::level\mbox{[}\mbox{\hyperlink{struct_map_a21e42d20381212b0bda7940f21f97312}{w}} $\ast$\mbox{\hyperlink{struct_map_ae0643a7a998c28ea074381ae8a802854}{h}}+1\mbox{]}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
@@ -80,11 +93,15 @@ Rysowanie mapy
 \DoxyCodeLine{    \textcolor{stringliteral}{"{}2333333222222222"{}}}
 
 \end{DoxyCode}
+
+
+poziom pierwszy 
+
 \mbox{\Hypertarget{struct_map_af7fe1b8b2180e9ab8f36cc4a8a3e8eeb}\label{struct_map_af7fe1b8b2180e9ab8f36cc4a8a3e8eeb}} 
 \index{Map@{Map}!level2@{level2}}
 \index{level2@{level2}!Map@{Map}}
 \doxysubsubsection{\texorpdfstring{level2}{level2}}
-{\footnotesize\ttfamily constexpr char Map\+::level2\mbox{[}w $\ast$h+1\mbox{]}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily constexpr char Map\+::level2\mbox{[}\mbox{\hyperlink{struct_map_a21e42d20381212b0bda7940f21f97312}{w}} $\ast$\mbox{\hyperlink{struct_map_ae0643a7a998c28ea074381ae8a802854}{h}}+1\mbox{]}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
@@ -104,13 +121,36 @@ Rysowanie mapy
 \DoxyCodeLine{        \textcolor{stringliteral}{"{}2333333333333332"{}}}
 
 \end{DoxyCode}
+
+
+poziom drugi 
+
 \mbox{\Hypertarget{struct_map_a92378f27d8c961168ac079ef6d019fc7}\label{struct_map_a92378f27d8c961168ac079ef6d019fc7}} 
 \index{Map@{Map}!renderer@{renderer}}
 \index{renderer@{renderer}!Map@{Map}}
 \doxysubsubsection{\texorpdfstring{renderer}{renderer}}
 {\footnotesize\ttfamily SDL\+\_\+\+Renderer$\ast$ Map\+::renderer}
 
+
+
+renderer 
+
 Zdefiniowane rozmiary pojedyńczych części mapy w oknie, tekstury do narysowania oraz rozmiary mapy. Tablica level określa, w których miejscach na mapie znajduje się jaka tekstura. 
+\begin{DoxyParams}{Parameters}
+{\em tile\+\_\+w} & szerokosc jednego z kwadratow mapy \\
+\hline
+{\em tile\+\_\+h} & wysokosc jednego z kwadratow mapy \\
+\hline
+{\em w} & szerokosc calej mapy (ilosc kwadratow) \\
+\hline
+{\em h} & wysokosc calej mapy (ilosc kwadratow) \\
+\hline
+{\em level} & pierwszy poziom \\
+\hline
+{\em level2} & drugi poziom \\
+\hline
+\end{DoxyParams}
+
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

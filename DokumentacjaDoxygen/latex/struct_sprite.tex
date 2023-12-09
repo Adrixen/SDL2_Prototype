@@ -9,8 +9,7 @@ Inheritance diagram for Sprite\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{struct_sprite_a8b05d6c589baaf9f66d4f9acef34cdc3}\label{struct_sprite_a8b05d6c589baaf9f66d4f9acef34cdc3}} 
-{\bfseries Sprite} (SDL\+\_\+\+Renderer $\ast$renderer, const std\+::string filename, const int width)
+\mbox{\hyperlink{struct_sprite_a8b05d6c589baaf9f66d4f9acef34cdc3}{Sprite}} (SDL\+\_\+\+Renderer $\ast$renderer, const std\+::string filename, const int \mbox{\hyperlink{struct_sprite_a0a3364944c5e361fc9e7ae406224d682}{width}})
 \item 
 SDL\+\_\+\+Rect \mbox{\hyperlink{struct_sprite_a03a97edd3fcfe79b5cf4c4706ddf215d}{rect}} (const int idx) const
 \item 
@@ -19,30 +18,51 @@ SDL\+\_\+\+Rect \mbox{\hyperlink{struct_sprite_a03a97edd3fcfe79b5cf4c4706ddf215d
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-const char $\ast$ \mbox{\hyperlink{struct_sprite_ac383121833b77ae1737d1ba7e2d0c341}{image\+\_\+path}} = \char`\"{}C\+:\textbackslash{}\textbackslash{}\+Users\textbackslash{}\textbackslash{}\+Martin\textbackslash{}\textbackslash{}source\textbackslash{}\textbackslash{}repos\textbackslash{}\textbackslash{}\+SDL2\+\_\+\+Prototype-\/v0.\+01\textbackslash{}\textbackslash{}resources\textbackslash{}\textbackslash{}\char`\"{}
+\mbox{\Hypertarget{struct_sprite_ac383121833b77ae1737d1ba7e2d0c341}\label{struct_sprite_ac383121833b77ae1737d1ba7e2d0c341}} 
+const char $\ast$ {\bfseries image\+\_\+path} = \char`\"{}C\+:\textbackslash{}\textbackslash{}\+Users\textbackslash{}\textbackslash{}\+Martin\textbackslash{}\textbackslash{}source\textbackslash{}\textbackslash{}repos\textbackslash{}\textbackslash{}\+SDL2\+\_\+\+Prototype-\/v0.\+01\textbackslash{}\textbackslash{}resources\textbackslash{}\textbackslash{}\char`\"{}
 \item 
 \mbox{\Hypertarget{struct_sprite_a531ed274733d916261f49e1a2cbb6ba9}\label{struct_sprite_a531ed274733d916261f49e1a2cbb6ba9}} 
 SDL\+\_\+\+Texture $\ast$ {\bfseries texture} = nullptr
-\item 
+\begin{DoxyCompactList}\small\item\em obraz \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_sprite_a0a3364944c5e361fc9e7ae406224d682}\label{struct_sprite_a0a3364944c5e361fc9e7ae406224d682}} 
 int {\bfseries width} = 0
-\item 
+\begin{DoxyCompactList}\small\item\em szerokosc sprite\textquotesingle{}a (szerokosc tekstury = width $\ast$ nframes) \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_sprite_a1f07c8f2080c193759aec0e13503d7ab}\label{struct_sprite_a1f07c8f2080c193759aec0e13503d7ab}} 
 int {\bfseries height} = 0
-\item 
+\begin{DoxyCompactList}\small\item\em wysokosc sprite\textquotesingle{}a \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_sprite_a195fd121e81102c43646fe0b07a51f7c}\label{struct_sprite_a195fd121e81102c43646fe0b07a51f7c}} 
 int {\bfseries nframes} = 0
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em liczba klatek w animacji \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struktura sprite\textquotesingle{}ów. Zdefiniowana tutaj szerokosc obrazu jest zaprogramowana tak by byc wielokrotnoscia szerokosci sprite\textquotesingle{}a W tej strukturze znajduje sie sciezka do wykorzystywanych zasobow i tekstur. 
+\begin{DoxyParams}{Parameters}
+{\em image\+\_\+path} & sciezka do plikow takich jak np tekstury \\
+\hline
+{\em renderer} & renderer SDL\textquotesingle{}a \\
+\hline
+{\em filename} & nazwa pliku ze sciezki \\
+\hline
+{\em width} & szerokosc tekstury \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{struct_sprite_a8accab430f9d90ae5117b57d67e32b84}\label{struct_sprite_a8accab430f9d90ae5117b57d67e32b84}} 
+\mbox{\Hypertarget{struct_sprite_a8b05d6c589baaf9f66d4f9acef34cdc3}\label{struct_sprite_a8b05d6c589baaf9f66d4f9acef34cdc3}} 
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{Sprite()}{Sprite()}}
+{\footnotesize\ttfamily Sprite\+::\+Sprite (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{const std\+::string}]{filename,  }\item[{const int}]{width }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\texorpdfstring{$<$}{<} szerokosc obrazu musi byc wielokrotnoscia szerokosci sprite\textquotesingle{}a\mbox{\Hypertarget{struct_sprite_a8accab430f9d90ae5117b57d67e32b84}\label{struct_sprite_a8accab430f9d90ae5117b57d67e32b84}} 
 \index{Sprite@{Sprite}!````~Sprite@{$\sim$Sprite}}
 \index{````~Sprite@{$\sim$Sprite}!Sprite@{Sprite}}
 \doxysubsubsection{\texorpdfstring{$\sim$Sprite()}{~Sprite()}}
 {\footnotesize\ttfamily Sprite\+::$\sim$\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Zwalnianie pamieci przez niszczenie tekstury 
+Zwalnianie pamieci przez niszczenie tekstury \texorpdfstring{$<$}{<} zwalnianie pamieci
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{struct_sprite_a03a97edd3fcfe79b5cf4c4706ddf215d}\label{struct_sprite_a03a97edd3fcfe79b5cf4c4706ddf215d}} 
@@ -52,15 +72,11 @@ Zwalnianie pamieci przez niszczenie tekstury
 {\footnotesize\ttfamily SDL\+\_\+\+Rect Sprite\+::rect (\begin{DoxyParamCaption}\item[{const int}]{idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 Wybieranie ID sprite\textquotesingle{}a z tekstury 
-
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{struct_sprite_ac383121833b77ae1737d1ba7e2d0c341}\label{struct_sprite_ac383121833b77ae1737d1ba7e2d0c341}} 
-\index{Sprite@{Sprite}!image\_path@{image\_path}}
-\index{image\_path@{image\_path}!Sprite@{Sprite}}
-\doxysubsubsection{\texorpdfstring{image\_path}{image\_path}}
-{\footnotesize\ttfamily const char$\ast$ Sprite\+::image\+\_\+path = \char`\"{}C\+:\textbackslash{}\textbackslash{}\+Users\textbackslash{}\textbackslash{}\+Martin\textbackslash{}\textbackslash{}source\textbackslash{}\textbackslash{}repos\textbackslash{}\textbackslash{}\+SDL2\+\_\+\+Prototype-\/v0.\+01\textbackslash{}\textbackslash{}resources\textbackslash{}\textbackslash{}\char`\"{}}
-
-Struktura sprite\textquotesingle{}ów. Zdefiniowana tutaj szerokosc obrazu jest zaprogramowana tak by byc wielokrotnoscia szerokosci sprite\textquotesingle{}a W tej strukturze znajduje sie sciezka do wykorzystywanych zasobow i tekstur. 
+\begin{DoxyParams}{Parameters}
+{\em idx} & id tekstury \\
+\hline
+\end{DoxyParams}
+\texorpdfstring{$<$}{<} wybieranie ID sprite\textquotesingle{}a z tekstury
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
