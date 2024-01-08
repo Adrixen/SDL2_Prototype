@@ -1,20 +1,20 @@
 ﻿  Source.cpp
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(369,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(583,76): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(583,47): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(587,45): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(587,29): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(589,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(596,45): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(596,29): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(598,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(701,9): warning C4101: 'charIndex': unreferenced local variable
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(805,41): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(1088,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(1093,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(377,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(599,76): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(599,47): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(603,45): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(603,29): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(605,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(612,45): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(612,29): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(614,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(717,9): warning C4101: 'charIndex': unreferenced local variable
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(821,41): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(1104,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Source.cpp(1109,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Generating code
-  5 of 1326 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
-    4 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+  0 of 1326 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SDL2_Prototype.vcxproj -> C:\Users\Martin\source\repos\SDL2_Prototype-v0.01\Release\SDL2_Prototype.exe

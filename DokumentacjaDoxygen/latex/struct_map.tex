@@ -5,6 +5,12 @@
 \item 
 \mbox{\hyperlink{struct_map_aa6715bd0234fb3c638e12dd02483fe7f}{Map}} (SDL\+\_\+\+Renderer $\ast$\mbox{\hyperlink{struct_map_a92378f27d8c961168ac079ef6d019fc7}{renderer}})
 \item 
+\mbox{\Hypertarget{struct_map_a1724507e6c42494488636de792beb7b4}\label{struct_map_a1724507e6c42494488636de792beb7b4}} 
+void {\bfseries update\+\_\+state} (double dt)
+\item 
+\mbox{\Hypertarget{struct_map_af76e923081788dcc89d0e8af190b3c70}\label{struct_map_af76e923081788dcc89d0e8af190b3c70}} 
+void {\bfseries update\+\_\+state1} (double dt)
+\item 
 void \mbox{\hyperlink{struct_map_a6a40755f8541eece2fa48e9e24a588f8}{draw}} ()
 \item 
 int \mbox{\hyperlink{struct_map_a94d0dbb9c2eb7efaebdaa5f33b2bddae}{get}} (const int i, const int j) const
@@ -14,6 +20,18 @@ bool {\bfseries is\+\_\+empty} (const int i, const int j) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_map_a18859bba6be73e1582d9ebff4b4f0bf3}\label{struct_map_a18859bba6be73e1582d9ebff4b4f0bf3}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_barrel}{Barrel}} $>$ {\bfseries barrels1}
+\item 
+\mbox{\Hypertarget{struct_map_aa7126861f6382a883fb51077a5d370ef}\label{struct_map_aa7126861f6382a883fb51077a5d370ef}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_barrel}{Barrel}} $>$ {\bfseries barrels2}
+\item 
+\mbox{\Hypertarget{struct_map_ad2c4949b1fbd9e3813fd8a6064c676f2}\label{struct_map_ad2c4949b1fbd9e3813fd8a6064c676f2}} 
+const \mbox{\hyperlink{struct_sprite}{Sprite}} {\bfseries barrel\+Texture1}
+\item 
+\mbox{\Hypertarget{struct_map_a4ae7ed7109885ab037e2b57b086f3797}\label{struct_map_a4ae7ed7109885ab037e2b57b086f3797}} 
+const \mbox{\hyperlink{struct_sprite}{Sprite}} {\bfseries barrel\+Texture2}
 \item 
 SDL\+\_\+\+Renderer $\ast$ \mbox{\hyperlink{struct_map_a92378f27d8c961168ac079ef6d019fc7}{renderer}}
 \begin{DoxyCompactList}\small\item\em renderer \end{DoxyCompactList}\item 
@@ -89,8 +107,8 @@ Rysowanie mapy \texorpdfstring{$<$}{<} rysowanie poziomu\mbox{\Hypertarget{struc
 \DoxyCodeLine{    \textcolor{stringliteral}{"{}2              2"{}}}
 \DoxyCodeLine{    \textcolor{stringliteral}{"{}2              2"{}}}
 \DoxyCodeLine{    \textcolor{stringliteral}{"{}2        3    52"{}}}
-\DoxyCodeLine{    \textcolor{stringliteral}{"{}2      332333332"{}}}
-\DoxyCodeLine{    \textcolor{stringliteral}{"{}2333333222222222"{}}}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}2    33332333332"{}}}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}2333322222222222"{}}}
 
 \end{DoxyCode}
 

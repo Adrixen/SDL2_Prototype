@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['fps_5fcounter_0',['FPS_Counter',['../struct_f_p_s___counter.html',1,'']]]
+  ['barrel_0',['Barrel',['../struct_barrel.html',1,'']]],
+  ['bullet_1',['Bullet',['../struct_bullet.html',1,'']]],
+  ['bulletsprite_2',['BulletSprite',['../struct_bullet_sprite.html',1,'']]]
 ];

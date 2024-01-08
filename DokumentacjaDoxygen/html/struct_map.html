@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SDL2 Project 3ID14B Platformer: Map Struct Reference</title>
+<title>SDL2 Project 4ID13B Platformer: Map Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">SDL2 Project 3ID14B Platformer<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">SDL2 Project 4ID13B Platformer<span id="projectnumber">&#160;1.0.0</span>
    </div>
-   <div id="projectbrief">Adrian Kowalski i Paweł Czyżewski</div>
+   <div id="projectbrief">Adrian Kowalski, Paweł Czyżewski, Kamil Adaś</div>
   </td>
  </tr>
  </tbody>
@@ -76,6 +76,12 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa6715bd0234fb3c638e12dd02483fe7f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_map.html#aa6715bd0234fb3c638e12dd02483fe7f">Map</a> (SDL_Renderer *<a class="el" href="struct_map.html#a92378f27d8c961168ac079ef6d019fc7">renderer</a>)</td></tr>
 <tr class="separator:aa6715bd0234fb3c638e12dd02483fe7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1724507e6c42494488636de792beb7b4"><td class="memItemLeft" align="right" valign="top"><a id="a1724507e6c42494488636de792beb7b4" name="a1724507e6c42494488636de792beb7b4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>update_state</b> (double dt)</td></tr>
+<tr class="separator:a1724507e6c42494488636de792beb7b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af76e923081788dcc89d0e8af190b3c70"><td class="memItemLeft" align="right" valign="top"><a id="af76e923081788dcc89d0e8af190b3c70" name="af76e923081788dcc89d0e8af190b3c70"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>update_state1</b> (double dt)</td></tr>
+<tr class="separator:af76e923081788dcc89d0e8af190b3c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a40755f8541eece2fa48e9e24a588f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_map.html#a6a40755f8541eece2fa48e9e24a588f8">draw</a> ()</td></tr>
 <tr class="separator:a6a40755f8541eece2fa48e9e24a588f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94d0dbb9c2eb7efaebdaa5f33b2bddae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_map.html#a94d0dbb9c2eb7efaebdaa5f33b2bddae">get</a> (const int i, const int j) const</td></tr>
@@ -86,6 +92,18 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_empty</b> (const i
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a18859bba6be73e1582d9ebff4b4f0bf3"><td class="memItemLeft" align="right" valign="top"><a id="a18859bba6be73e1582d9ebff4b4f0bf3" name="a18859bba6be73e1582d9ebff4b4f0bf3"></a>
+std::vector&lt; <a class="el" href="struct_barrel.html">Barrel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>barrels1</b></td></tr>
+<tr class="separator:a18859bba6be73e1582d9ebff4b4f0bf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7126861f6382a883fb51077a5d370ef"><td class="memItemLeft" align="right" valign="top"><a id="aa7126861f6382a883fb51077a5d370ef" name="aa7126861f6382a883fb51077a5d370ef"></a>
+std::vector&lt; <a class="el" href="struct_barrel.html">Barrel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>barrels2</b></td></tr>
+<tr class="separator:aa7126861f6382a883fb51077a5d370ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2c4949b1fbd9e3813fd8a6064c676f2"><td class="memItemLeft" align="right" valign="top"><a id="ad2c4949b1fbd9e3813fd8a6064c676f2" name="ad2c4949b1fbd9e3813fd8a6064c676f2"></a>
+const <a class="el" href="struct_sprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><b>barrelTexture1</b></td></tr>
+<tr class="separator:ad2c4949b1fbd9e3813fd8a6064c676f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ae7ed7109885ab037e2b57b086f3797"><td class="memItemLeft" align="right" valign="top"><a id="a4ae7ed7109885ab037e2b57b086f3797" name="a4ae7ed7109885ab037e2b57b086f3797"></a>
+const <a class="el" href="struct_sprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><b>barrelTexture2</b></td></tr>
+<tr class="separator:a4ae7ed7109885ab037e2b57b086f3797"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92378f27d8c961168ac079ef6d019fc7"><td class="memItemLeft" align="right" valign="top">SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_map.html#a92378f27d8c961168ac079ef6d019fc7">renderer</a></td></tr>
 <tr class="memdesc:a92378f27d8c961168ac079ef6d019fc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">renderer  <a href="struct_map.html#a92378f27d8c961168ac079ef6d019fc7">More...</a><br /></td></tr>
 <tr class="separator:a92378f27d8c961168ac079ef6d019fc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -245,8 +263,8 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>h</b>
 <div class="line">    <span class="stringliteral">&quot;2              2&quot;</span></div>
 <div class="line">    <span class="stringliteral">&quot;2              2&quot;</span></div>
 <div class="line">    <span class="stringliteral">&quot;2        3    52&quot;</span></div>
-<div class="line">    <span class="stringliteral">&quot;2      332333332&quot;</span></div>
-<div class="line">    <span class="stringliteral">&quot;2333333222222222&quot;</span></div>
+<div class="line">    <span class="stringliteral">&quot;2    33332333332&quot;</span></div>
+<div class="line">    <span class="stringliteral">&quot;2333322222222222&quot;</span></div>
 </div><!-- fragment -->
 <p>poziom pierwszy </p>
 

@@ -20,7 +20,7 @@
 /**
  * Gra platformowa napisana w języku C++ przy użyciu biblioteki SDL.
  *
- * @authors Adrian Kowalski, Paweł Czyżewski.
+ * @authors Adrian Kowalski, Paweł Czyżewski, Kamil Adaś
  */
 
 bool quit = false;
@@ -138,6 +138,10 @@ struct Animation : public Sprite
     const bool repeat = false; //!< czy powtorzyc animacje?
 };
 
+/**
+* Struktura odpowiadająca za pociski
+*/
+
 struct Bullet
 {
     double x, y;
@@ -159,6 +163,10 @@ struct Bullet
         y += vy * dt;
     }
 };
+
+/**
+* Struktura odpowiadająca za beczki
+*/
 
 struct Barrel
 {
@@ -386,10 +394,18 @@ struct FPS_Counter //!< licznik FPS ktory mozna ewentualnie wyswietlac, fps zlim
     const Sprite numbers;   //!< sprite cyfr
 };
 
+/**
+* Struktura odpowiadająca za sprite pocisku, dziedziczy glowna strukture sprite'a.
+*/
+
 struct BulletSprite : public Sprite
 {
     BulletSprite(SDL_Renderer* renderer, const std::string filename, const int width) : Sprite(renderer, filename, width) {}
 };
+
+/**
+* Struktura odpowiadająca za animacje niszczenia beczek
+*/
 
 struct Destruction
 {
@@ -529,10 +545,10 @@ struct Player
             file.open("SavedLevel.txt"); //!<zapisywanie poziomu
             file << poziom;
             file.close();
-            file.open("SavedTime.txt");
+            file.open("SavedTime.txt"); //!<zapisywanie czasu
             file << timetosave;
             file.close();
-            file.open("DestroyedBarrels.txt");
+            file.open("DestroyedBarrels.txt"); //!<zapisywanie ilosci zniszczonych beczek
             if(destroyed1==true)
             {
                 int iloscdestroyow = 1;

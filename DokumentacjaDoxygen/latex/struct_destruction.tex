@@ -1,0 +1,57 @@
+\hypertarget{struct_destruction}{}\doxysection{Destruction Struct Reference}
+\label{struct_destruction}\index{Destruction@{Destruction}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_destruction_aa56355f22f0d19c73fb3ccb8146a08f8}\label{struct_destruction_aa56355f22f0d19c73fb3ccb8146a08f8}} 
+enum {\bfseries States} \{ {\bfseries REST} = 0
+, {\bfseries DESTRUCTION} = 1
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_destruction_a428f36d8784f5029f592eae7e54df40b}\label{struct_destruction_a428f36d8784f5029f592eae7e54df40b}} 
+{\bfseries Destruction} (SDL\+\_\+\+Renderer $\ast$\mbox{\hyperlink{struct_destruction_a903ed4fb092f3399378d285706b73dc8}{renderer}})
+\item 
+\mbox{\Hypertarget{struct_destruction_a2fefa8e6de5112190d0e41c1887cb23a}\label{struct_destruction_a2fefa8e6de5112190d0e41c1887cb23a}} 
+void {\bfseries start\+Destruction\+Animation} ()
+\item 
+\mbox{\Hypertarget{struct_destruction_a2ce41e73af286515f564c16d48d9db96}\label{struct_destruction_a2ce41e73af286515f564c16d48d9db96}} 
+void {\bfseries draw} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_destruction_aafacecd221d0efccb8117fba02052a07}\label{struct_destruction_aafacecd221d0efccb8117fba02052a07}} 
+double {\bfseries x} = 330
+\item 
+\mbox{\Hypertarget{struct_destruction_a32e0e36a50f1bb4229ca21cf945c09a1}\label{struct_destruction_a32e0e36a50f1bb4229ca21cf945c09a1}} 
+double {\bfseries y} = 374
+\begin{DoxyCompactList}\small\item\em koordynaty \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_destruction_a6a0571d00f27190dc0473e62420c2a9b}\label{struct_destruction_a6a0571d00f27190dc0473e62420c2a9b}} 
+int {\bfseries state} = DESTRUCTION
+\begin{DoxyCompactList}\small\item\em obecny sprite \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_destruction_a18b217bd66fc79577b9b8c25573b0c9e}\label{struct_destruction_a18b217bd66fc79577b9b8c25573b0c9e}} 
+Time\+Stamp {\bfseries timestamp} = Clock\+::now()
+\item 
+\mbox{\Hypertarget{struct_destruction_a903ed4fb092f3399378d285706b73dc8}\label{struct_destruction_a903ed4fb092f3399378d285706b73dc8}} 
+SDL\+\_\+\+Renderer $\ast$ {\bfseries renderer}
+\begin{DoxyCompactList}\small\item\em rysowanie tutaj \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_destruction_af2a36320d91dd413e87de578e8530193}\label{struct_destruction_af2a36320d91dd413e87de578e8530193}} 
+const int {\bfseries sprite\+\_\+w} = 250
+\begin{DoxyCompactList}\small\item\em wielkosc sprite\textquotesingle{}a na ekranie \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_destruction_a9c9b82fc06b3fed5a64fca6a3fb9abbf}\label{struct_destruction_a9c9b82fc06b3fed5a64fca6a3fb9abbf}} 
+const int {\bfseries sprite\+\_\+h} = 128
+\item 
+\mbox{\Hypertarget{struct_destruction_ad5b80465e7ab41c4d621c6ee8a573396}\label{struct_destruction_ad5b80465e7ab41c4d621c6ee8a573396}} 
+const std\+::array$<$ \mbox{\hyperlink{struct_animation}{Animation}}, 2 $>$ {\bfseries sprites}
+\begin{DoxyCompactList}\small\item\em sekwencje sprite\textquotesingle{} do narysowania \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struktura odpowiadająca za animacje niszczenia beczek 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source.\+cpp\end{DoxyCompactItemize}

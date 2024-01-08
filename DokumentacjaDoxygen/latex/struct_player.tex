@@ -37,6 +37,24 @@ double {\bfseries kordgettery} ()
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{struct_player_ac7d3b60d75350748eb05b1f35873c98b}\label{struct_player_ac7d3b60d75350748eb05b1f35873c98b}} 
+int {\bfseries frames\+Since\+Last\+Shot} = 0
+\item 
+\mbox{\Hypertarget{struct_player_ab3eec1e6508d1dfad5dfdb174f3a369c}\label{struct_player_ab3eec1e6508d1dfad5dfdb174f3a369c}} 
+const int {\bfseries shot\+Cooldown\+Frames} = 30
+\item 
+\mbox{\Hypertarget{struct_player_ada37109f2f0cf0f03979a26dd808e694}\label{struct_player_ada37109f2f0cf0f03979a26dd808e694}} 
+double {\bfseries last\+Shoot\+Time}
+\item 
+\mbox{\Hypertarget{struct_player_a0e0596aeccc8a71ce37c950f6f778f6b}\label{struct_player_a0e0596aeccc8a71ce37c950f6f778f6b}} 
+double {\bfseries shoot\+Cooldown}
+\item 
+\mbox{\Hypertarget{struct_player_ac3a5e0ecf92b18749d4c026b90d04a0d}\label{struct_player_ac3a5e0ecf92b18749d4c026b90d04a0d}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_bullet}{Bullet}} $>$ {\bfseries bullets}
+\item 
+\mbox{\Hypertarget{struct_player_a5a0a3a1e67d799232e434636264e02aa}\label{struct_player_a5a0a3a1e67d799232e434636264e02aa}} 
+\mbox{\hyperlink{struct_bullet_sprite}{Bullet\+Sprite}} {\bfseries bullet\+Texture}
+\item 
 \mbox{\Hypertarget{struct_player_a0458b4db8e8e816bdb2b365b70b53307}\label{struct_player_a0458b4db8e8e816bdb2b365b70b53307}} 
 double {\bfseries x} = 150
 \item 
@@ -115,7 +133,11 @@ Metoda, która pobiera przyciski z klawiatury, dzięki którym gracz może się 
 
 \texorpdfstring{$<$}{<}zapisywanie koordynatu Y
 
-\texorpdfstring{$<$}{<}zapisywanie poziomu\mbox{\Hypertarget{struct_player_a3ebd1c9b0d542aa486925e1a13eb691f}\label{struct_player_a3ebd1c9b0d542aa486925e1a13eb691f}} 
+\texorpdfstring{$<$}{<}zapisywanie poziomu
+
+\texorpdfstring{$<$}{<}zapisywanie czasu
+
+\texorpdfstring{$<$}{<}zapisywanie ilosci zniszczonych beczek\mbox{\Hypertarget{struct_player_a3ebd1c9b0d542aa486925e1a13eb691f}\label{struct_player_a3ebd1c9b0d542aa486925e1a13eb691f}} 
 \index{Player@{Player}!set\_state@{set\_state}}
 \index{set\_state@{set\_state}!Player@{Player}}
 \doxysubsubsection{\texorpdfstring{set\_state()}{set\_state()}}

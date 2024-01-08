@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SDL2 Project 3ID14B Platformer: Player Struct Reference</title>
+<title>SDL2 Project 4ID13B Platformer: Player Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">SDL2 Project 3ID14B Platformer<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">SDL2 Project 4ID13B Platformer<span id="projectnumber">&#160;1.0.0</span>
    </div>
-   <div id="projectbrief">Adrian Kowalski i Paweł Czyżewski</div>
+   <div id="projectbrief">Adrian Kowalski, Paweł Czyżewski, Kamil Adaś</div>
   </td>
  </tr>
  </tbody>
@@ -108,6 +108,24 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>kordgettery</b> ()<
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:ac7d3b60d75350748eb05b1f35873c98b"><td class="memItemLeft" align="right" valign="top"><a id="ac7d3b60d75350748eb05b1f35873c98b" name="ac7d3b60d75350748eb05b1f35873c98b"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>framesSinceLastShot</b> = 0</td></tr>
+<tr class="separator:ac7d3b60d75350748eb05b1f35873c98b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3eec1e6508d1dfad5dfdb174f3a369c"><td class="memItemLeft" align="right" valign="top"><a id="ab3eec1e6508d1dfad5dfdb174f3a369c" name="ab3eec1e6508d1dfad5dfdb174f3a369c"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><b>shotCooldownFrames</b> = 30</td></tr>
+<tr class="separator:ab3eec1e6508d1dfad5dfdb174f3a369c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada37109f2f0cf0f03979a26dd808e694"><td class="memItemLeft" align="right" valign="top"><a id="ada37109f2f0cf0f03979a26dd808e694" name="ada37109f2f0cf0f03979a26dd808e694"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>lastShootTime</b></td></tr>
+<tr class="separator:ada37109f2f0cf0f03979a26dd808e694"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e0596aeccc8a71ce37c950f6f778f6b"><td class="memItemLeft" align="right" valign="top"><a id="a0e0596aeccc8a71ce37c950f6f778f6b" name="a0e0596aeccc8a71ce37c950f6f778f6b"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>shootCooldown</b></td></tr>
+<tr class="separator:a0e0596aeccc8a71ce37c950f6f778f6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3a5e0ecf92b18749d4c026b90d04a0d"><td class="memItemLeft" align="right" valign="top"><a id="ac3a5e0ecf92b18749d4c026b90d04a0d" name="ac3a5e0ecf92b18749d4c026b90d04a0d"></a>
+std::vector&lt; <a class="el" href="struct_bullet.html">Bullet</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bullets</b></td></tr>
+<tr class="separator:ac3a5e0ecf92b18749d4c026b90d04a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a0a3a1e67d799232e434636264e02aa"><td class="memItemLeft" align="right" valign="top"><a id="a5a0a3a1e67d799232e434636264e02aa" name="a5a0a3a1e67d799232e434636264e02aa"></a>
+<a class="el" href="struct_bullet_sprite.html">BulletSprite</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bulletTexture</b></td></tr>
+<tr class="separator:a5a0a3a1e67d799232e434636264e02aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0458b4db8e8e816bdb2b365b70b53307"><td class="memItemLeft" align="right" valign="top"><a id="a0458b4db8e8e816bdb2b365b70b53307" name="a0458b4db8e8e816bdb2b365b70b53307"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>x</b> = 150</td></tr>
 <tr class="separator:a0458b4db8e8e816bdb2b365b70b53307"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -222,6 +240,8 @@ const std::array&lt; <a class="el" href="struct_animation.html">Animation</a>, 6
 <p >&lt;zapisywanie koordynatu X</p>
 <p >&lt;zapisywanie koordynatu Y</p>
 <p >&lt;zapisywanie poziomu</p>
+<p >&lt;zapisywanie czasu</p>
+<p >&lt;zapisywanie ilosci zniszczonych beczek</p>
 
 </div>
 </div>
